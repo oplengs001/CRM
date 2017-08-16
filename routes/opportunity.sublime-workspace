@@ -1,0 +1,864 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"pas",
+				"parseInt"
+			],
+			[
+				"pro_ob",
+				"pro_obj_emp"
+			],
+			[
+				"prod",
+				"productivity_results"
+			],
+			[
+				"par",
+				"parseInt"
+			],
+			[
+				"margin",
+				"margin-bottom"
+			],
+			[
+				"Success",
+				"successfully"
+			],
+			[
+				"u",
+				"userdata"
+			],
+			[
+				"json",
+				"json_encode"
+			],
+			[
+				"var",
+				"var_dump"
+			],
+			[
+				"paddin",
+				"padding-bottom"
+			],
+			[
+				"paddi",
+				"padding-bottom"
+			],
+			[
+				"pos",
+				"position"
+			],
+			[
+				"pad",
+				"padding-bottom"
+			],
+			[
+				"padding",
+				"padding-bottom"
+			],
+			[
+				"get_s",
+				"get_stylesheet_directory_uri"
+			],
+			[
+				"d",
+				"display"
+			],
+			[
+				"pa",
+				"padding-left"
+			],
+			[
+				"padding-",
+				"padding-bottom"
+			],
+			[
+				"va",
+				"var_dump"
+			],
+			[
+				"min-",
+				"min-width"
+			],
+			[
+				"print",
+				"print_r"
+			],
+			[
+				"create",
+				"createElement()\tReact"
+			],
+			[
+				"con",
+				"console.log"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"co",
+				"console.log"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"contents": "Here are your login informations:\nhttps://app.workpuls.com\nEmail: tom@prosourcebpo.com\nPassword: 639062708363",
+			"settings":
+			{
+				"buffer_size": 109,
+				"line_ending": "Windows",
+				"name": "Here are your login informations:"
+			}
+		},
+		{
+			"file": "workpuls.js",
+			"settings":
+			{
+				"buffer_size": 9370,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/E/project-node/CRM-master/public/js/workpulsfront.js",
+			"settings":
+			{
+				"buffer_size": 2696,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "\n\nProcedure\n\n1. Display Fullname, Position, Account and Path (img)\n\n2. You can use any javascript libraries (jquery)\n\n3. You can use css framework\n\n4. Display should be 4 columns in each row.\n\n---------------------------------------------------------\n\n\n\nworkpuls API\n\nhttps://app.workpuls.com\nEmail: tom@prosourcebpo.com\nPassword: 639062708363",
+			"settings":
+			{
+				"buffer_size": 343,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/E/project-node/CRM-master/views/partials/navbar.handlebars",
+			"settings":
+			{
+				"buffer_size": 9540,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/E/project-node/CRM-master/views/workview/workview_view.handlebars",
+			"settings":
+			{
+				"buffer_size": 49396,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "leads.js",
+			"settings":
+			{
+				"buffer_size": 24497,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/E/project-node/CRM-master/app.js",
+			"settings":
+			{
+				"buffer_size": 21659,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 173.0,
+		"last_filter": "insta",
+		"selected_items":
+		[
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"javascri",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 416.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d39e33b79698005270310898eea76'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/E/project-node/CRM-master",
+		"/E/project-node/CRM-master/public",
+		"/E/project-node/CRM-master/views",
+		"/E/project-node/CRM-master/views/workview"
+	],
+	"file_history":
+	[
+		"/E/project-node/CRM-master/routes/workpulsbk.js",
+		"/E/project-node/CRM-master/model/employeeProductive.js",
+		"/E/project-node/CRM-master/routes/accounts.js",
+		"/E/project-node/CRM-master/views/workview/workview_view.handlebars",
+		"/E/project-node/CRM-master/routes/leads.js",
+		"/E/project-node/CRM-master/routes/workpuls.js",
+		"/E/project-node/CRM-master/model/employee.js",
+		"/E/project-node/CRM-master/model/productivity.js",
+		"/E/project-node/CRM-master/package.json",
+		"/E/project-node/CRM-master/public/js/work_view.js",
+		"/E/project-node/CRM-master/model/leads.js",
+		"/C/Users/joelr/Desktop/lopez-exam/index.html",
+		"/C/Users/joelr/Desktop/lopez-exam/app.js",
+		"/C/Users/joelr/Desktop/exam-joel/index.html",
+		"/E/project-node/CRM-master/routes/index.js",
+		"/E/project-node/CRM-master/app.js",
+		"/C/Users/joelr/Desktop/exam-joel/app.js",
+		"/C/Users/joelr/Desktop/exam-joel/package.json",
+		"/E/project-node/CRM-master/public/js/show_project.js",
+		"/E/project-node/CRM-master/routes/project.js",
+		"/E/project-node/CRM-master/views/project/show_project.handlebars",
+		"/E/project-node/CRM-master/views/leads/show_leads.handlebars",
+		"/E/project-node/CRM-master/views/leads/view_leads.handlebars",
+		"/E/project-node/CRM-master/views/accounts/show_accounts.handlebars",
+		"/C/Users/joelr/Desktop/myhometheme/templates/post-vertical.php",
+		"/C/Users/joelr/Desktop/myhometheme/assets/js/material.js",
+		"/C/Users/joelr/Desktop/myhometheme/assets/js/app.js",
+		"/E/project-node/CRM-master/routes/projectview.js",
+		"/E/project-node/CRM-master/views/projectview.handlebars",
+		"/C/xampp/htdocs/socialdesk/wp-content/themes/coworking/style.css",
+		"/C/xampp/htdocs/socialdesk/wp-content/themes/coworking/functions.php",
+		"/C/xampp/htdocs/socialdesk/wp-content/themes/coworking/footer.php",
+		"/C/xampp/htdocs/socialdesk/wp-content/themes/coworking/js/script.js",
+		"/C/xampp/htdocs/socialdesk/wp-content/themes/coworking/templ-broker-partnership.php",
+		"/C/xampp/htdocs/socialdesk/wp-content/themes/coworking/templ-broker-admin.php",
+		"/C/xampp/htdocs/socialdesk/wp-content/themes/coworking/templ-home.php",
+		"/C/xampp/htdocs/socialdesk/wp-content/themes/coworking/header.php",
+		"/C/xampp/htdocs/socialdesk/wp-content/themes/coworking/templ-events.php",
+		"/C/xampp/htdocs/socialdesk/wp-content/themes/coworking/header-broker.php",
+		"/C/Users/joelr/Desktop/react-native-sample/AwesomeProject/Splash.js",
+		"/C/Users/joelr/Desktop/react-native-sample/AwesomeProject/App.js",
+		"/C/Users/joelr/Desktop/react-native-sample/myFirstProject/package.json",
+		"/C/xampp/htdocs/socialdesk/wp-content/plugins/uni-profilini/includes/uni-profilini-functions.php",
+		"/C/Users/joelr/Desktop/single-service.php",
+		"/C/xampp/htdocs/socialdesk/wp-content/themes/coworking/functions.bk.php",
+		"/C/xampp/htdocs/socialdesk/wp-content/themes/coworking/single.php",
+		"/C/xampp/htdocs/socialdesk/wp-content/themes/coworking/templ-enterprise.php",
+		"/C/xampp/htdocs/socialdesk/wp-content/themes/coworking/templ-plans2.php",
+		"/C/xampp/htdocs/socialdesk/wp-content/themes/coworking/templ-why-us.php",
+		"/E/project-node/CRM-master/public/js/show_accounts.js",
+		"/C/Users/joelr/Desktop/new/index.html",
+		"/C/Users/joelr/Desktop/wp-config.php",
+		"/C/xampp/htdocs/socialdesk/wp-content/themes/coworking/templ-misison.php",
+		"/C/Users/joelr/Desktop/socialdeskdb.sql",
+		"/C/xampp/htdocs/socialdesk/wp-content/themes/coworking/footerbk.php",
+		"/C/xampp/htdocs/socialdesk/wp-content/themes/coworking/archive.php",
+		"/C/xampp/htdocs/socialdesk/wp-content/themes/coworking/includes/uni-metabox.php",
+		"/C/xampp/htdocs/socialdesk/wp-content/themes/coworking/js/jquery.sticky-kit.min.js",
+		"/C/xampp/htdocs/socialdesk/wp-content/themes/coworking/option-tree/includes/ot-meta-box-api.php",
+		"/C/xampp/htdocs/socialdesk/wp-content/themes/coworking/option-tree/includes/ot-post-formats-api.php",
+		"/C/xampp/htdocs/socialdesk/wp-content/themes/coworking/single-uni_event.php",
+		"/C/xampp/htdocs/socialdesk/wp-content/themes/coworking/single-tc_events.php",
+		"/C/xampp/htdocs/socialdesk/wp-content/themes/coworking/single-uni_pricebk.php",
+		"/C/Users/joelr/Desktop/detectmobilebrowser.js.txt",
+		"/C/Users/joelr/Desktop/bootstrap-3.3.7-dist/css/bootstrap.css",
+		"/C/xampp/htdocs/socialdesk/wp-content/themes/coworking/js/google-chart.js",
+		"/C/xampp/htdocs/socialdesk/wp-content/themes/coworking/js/jquery.bxslider.min.js",
+		"/C/xampp/htdocs/socialdesk/wp-content/themes/coworking/css/bxslider.css",
+		"/C/xampp/htdocs/yourmusicsource/wp-config.php",
+		"/C/xampp/htdocs/socialdesk/wp-config.php",
+		"/E/project-node/CRM-master/model/logacall.js",
+		"/E/project-node/CRM-master/routes/admin.js",
+		"/E/project-node/CRM-master/views/opportunity/show_opportunity.handlebars",
+		"/E/project-node/CRM-master/public/js/show_user_profile.js",
+		"/E/project-node/CRM-master/views/account_users/show_user_profile.handlebars",
+		"/E/project-node/CRM-master/model/accountLogEmail.js",
+		"/E/project-node/CRM-master/.gitignore",
+		"/E/project-node/CRM-master/model/oppurtunitytask.js",
+		"/E/project-node/CRM-master/public/js/show_opportunity.js",
+		"/E/project-node/CRM-master/routes/opportunity.js",
+		"/E/project-node/CRM-master/public/js/view_oppurtunity.js",
+		"/E/project-node/CRM-master/public/js/view_opportunity.js",
+		"/E/project-node/CRM-master/model/oppurtunitytasks.js",
+		"/E/project-node/CRM-master/model/leadloc.js",
+		"/E/project-node/CRM-master/model/leadtask.js",
+		"/E/project-node/CRM-master/public/js/show_leads.js",
+		"/E/project-node/CRM-master/model/oppurtunitylogcall.js",
+		"/E/project-node/CRM-master/model/campaignlogacall.js",
+		"/C/Users/joelr/Desktop/ChilindoTest-master/public/js/test2.js",
+		"/C/Users/joelr/Desktop/ChilindoTest-master/routes/test2.js",
+		"/C/Users/joelr/Desktop/ChilindoTest-master/.gitignore",
+		"/C/Users/joelr/Desktop/chilio-exam/public/css/styles.css",
+		"/C/Users/joelr/Desktop/chilio-exam/model/invoice.js",
+		"/C/Users/joelr/Desktop/chilio-exam/test1/view/index.html",
+		"/C/Users/joelr/Desktop/chilio-exam/public/js/test2.js",
+		"/C/Users/joelr/Desktop/chilio-exam/routes/test2.js",
+		"/C/Users/joelr/Desktop/chilio-exam/test2/view/index.html",
+		"/C/Users/joelr/Desktop/chilio-exam/.gitignore",
+		"/C/Users/joelr/Desktop/chilio-exam/public/js/main.js",
+		"/C/Users/joelr/Desktop/chilio-exam/routes/test1.js",
+		"/E/project-node/CRM-master/routes/campaigns",
+		"/E/project-node/CRM-master/routes/milestone.js",
+		"/C/Users/joelr/Desktop/chilio-exam/index.html",
+		"/C/Users/joelr/Desktop/chilio-exam/app.js",
+		"/E/project-node/CRM-master/model/admin.js",
+		"/C/Users/joelr/Desktop/chilio-exam/test1/public/js/main.js",
+		"/C/Users/joelr/Desktop/chilio-exam/test1/public/css/styles.css",
+		"/E/theme/themeforest-4021469-metronic-responsive-admin-dashboard-template/metronic_v4.5.4/theme/admin_1_material_design/form_wizard.html",
+		"/E/project-node/CRM-master/public/assets/global/css/components.css",
+		"/E/theme/themeforest-4021469-metronic-responsive-admin-dashboard-template/metronic_v4.5.4/theme/assets/pages/scripts/form-wizard.js",
+		"/C/Users/joelr/Desktop/chilio-exam/test1/public/js/bootstrap.min.js",
+		"/C/xampp/htdocs/yourmusicsource/credentialsshobe",
+		"/C/Users/joelr/Desktop/chilio-exam/test1/public/js/jquery.bootstrap.wizard.js",
+		"/E/project-node/CRM-master/model/oppurtunitylogemail.js",
+		"/E/project-node/CRM-master/model/oppurtunity.js",
+		"/C/Users/joelr/Desktop/chilio-exam/test1/public/css/components-md.min.css",
+		"/E/project-node/CRM-master/model/leadslogemail.js",
+		"/C/Users/joelr/Downloads/Compressed/myhometheme/includes/class-myhome-comments.php",
+		"/C/Users/joelr/Downloads/Compressed/myhometheme/assets/js/app.js",
+		"/C/Users/joelr/Downloads/Compressed/myhometheme/includes/class-myhome-redux.php",
+		"/E/project-node/CRM-master/model/campaignTask.js",
+		"/C/xampp/htdocs/yourmusicsource/wp-content/themes/Divi/style.css",
+		"/C/xampp/htdocs/yourmusicsource/readthischristine.php",
+		"/C/xampp/htdocs/yourmusicsource/myscript.js",
+		"/E/project-node/CRM-master/client/index.js",
+		"/C/Users/joelr/Desktop/mern/mern_practice/.babelrc",
+		"/E/project-node/CRM-master/webpack.prod.config.js",
+		"/C/Users/joelr/Desktop/mern/mern_practice/webpack.config.dev.js"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 90.0,
+		"where_history":
+		[
+			"E:\\project-node\\CRM-master\\routes",
+			"E:\\project-node\\CRM-master\\public\\js",
+			"E:\\project-node\\CRM-master",
+			"C:\\Users\\joelr\\Desktop\\myhometheme",
+			"C:\\xampp\\htdocs\\socialdesk\\wp-content\\themes\\coworking",
+			"C:\\xampp\\htdocs\\socialdesk",
+			"C:\\xampp\\htdocs\\socialdesk\\wp-content\\themes\\coworking",
+			"C:\\xampp\\htdocs\\socialdesk\\wp-content\\themes\\coworking\\option-tree\\includes",
+			"C:\\xampp\\htdocs\\socialdesk\\wp-content\\themes\\coworking",
+			"C:\\xampp\\htdocs\\socialdesk\\wp-content\\plugins",
+			"C:\\xampp\\htdocs\\socialdesk\\wp-content\\themes\\coworking",
+			"C:\\xampp\\htdocs\\socialdesk\\wp-content\\themes",
+			"C:\\xampp\\htdocs\\socialdesk\\wp-content\\themes\\coworking",
+			"C:\\Users\\joelr\\Downloads\\Compressed\\myhometheme",
+			"C:\\Users\\joelr\\Downloads\\Compressed\\myhometheme\\templates",
+			"C:\\Users\\joelr\\Downloads\\Compressed\\myhometheme",
+			"C:\\xampp\\htdocs\\projectronald\\wp-content\\themes\\betheme",
+			"E:\\project-node\\CRM-master\\views"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"sample_1",
+			"sample_3",
+			"getEmployee_data",
+			"pro_obj_emp",
+			"reload",
+			"LeadTaskModel",
+			"Leads",
+			"post",
+			"each",
+			"for",
+			"foreach",
+			"Your trash",
+			"selectedOptionl",
+			"recurring",
+			"append",
+			"req.user",
+			"commentsTask",
+			"project_id",
+			"optiona == 'HGR'",
+			"Blue",
+			"Your recycling week is DBJ (White)",
+			"AddTaskFunc",
+			"updateCompleted",
+			"taskFeedItem",
+			"milestoneData",
+			"PMTModel",
+			"todo-tasklist-item-title",
+			"LeadSource",
+			"mh-estate-vertical",
+			"mdl-button mdl-js-button",
+			"mdl-button__ripple-container",
+			"mh-grid mh-listing-page",
+			"compare-label",
+			"mh-estate-vertical",
+			"{{",
+			"api/show_milestone",
+			"/api/show_milestone/",
+			"listMilestoneData",
+			"add_milestone",
+			"ProjectViewRoutes",
+			"booking_form",
+			"bookin_form",
+			"booking_form",
+			"ajax",
+			"uni_input_submit",
+			"loginForm",
+			"modal",
+			"    padding-right: 17px;",
+			"wp_footer",
+			"bookingForm",
+			"gridSystemModal",
+			"uni_coworking_theme_header_div_output",
+			"gridSystemModal",
+			"uni_coworking_theme_booking_form_output",
+			"bookingForm",
+			"uni_preferred_service",
+			"bookingForm ",
+			"bookingForm",
+			"headercontainer",
+			"wework",
+			"menuTabs",
+			"container-form-box",
+			"menuTabs",
+			".radio-group",
+			".headerWrap",
+			"Benefits",
+			".homeSlider .scell",
+			".pricingPlans",
+			"logo-fixed",
+			"navbar-header",
+			"menu-primary-menu",
+			"primary-navbar-collapse",
+			"menu-primary-menu",
+			"login",
+			"custom",
+			".nav-tabs>li>a:hover",
+			".js",
+			"login",
+			"form",
+			"register",
+			"custom",
+			"uni_profilini_profession",
+			".home",
+			"@media",
+			"login",
+			"custom_act",
+			"form-register",
+			"registerForm",
+			"uni_profilini",
+			"About the user",
+			"phone_number",
+			"uni_profilini_phone_number",
+			"Extra profile information",
+			"extra_user_profile_fields",
+			"profileuser",
+			"show_user_profile",
+			"user_login",
+			"add new",
+			"firstname",
+			"show_user_profile",
+			"register now",
+			"@media",
+			"container-content",
+			"sticky_pin",
+			"stickybox",
+			"stickybox\nstickybox",
+			"font-fami",
+			".js",
+			"page-id-710",
+			"sortByKey",
+			"Dr. Sunil International Dental Center",
+			"amenities",
+			".page-id-437 .fcell .joinNow",
+			".page-id-437 .container-box",
+			"homeSlider-1 ",
+			"WeWork",
+			"row",
+			"init",
+			"row",
+			"$aPriceItemBg",
+			"aPriceItemBg",
+			"sPriceItemBgUrl",
+			"aPriceItemBg",
+			"single",
+			"single post",
+			"ready",
+			"$iNumberOfPrices",
+			"iNumberOfPrices"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 109,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								109,
+								97
+							]
+						],
+						"settings":
+						{
+							"auto_name": "Here are your login informations:",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "workpuls.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9370,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5433,
+								5423
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScriptNext - ES6 Syntax/JavaScriptNext.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/E/project-node/CRM-master/public/js/workpulsfront.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2696,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								745,
+								760
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScriptNext - ES6 Syntax/JavaScriptNext.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 351.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 343,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								343,
+								331
+							]
+						],
+						"settings":
+						{
+							"auto_name": "",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/E/project-node/CRM-master/views/partials/navbar.handlebars",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9540,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3444,
+								3444
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 666.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "/E/project-node/CRM-master/views/workview/workview_view.handlebars",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 49396,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3579,
+								3527
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 676.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "leads.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 24497,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								11161,
+								11045
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScriptNext - ES6 Syntax/JavaScriptNext.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 4417.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "/E/project-node/CRM-master/app.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 21659,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								21565,
+								21455
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScriptNext - ES6 Syntax/JavaScriptNext.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 12440.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 21.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "opportunity.sublime-project",
+	"replace":
+	{
+		"height": 38.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "d",
+		"selected_items":
+		[
+			[
+				"d",
+				"E:\\project-node\\CRM-master\\routes\\opportunity.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 255.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

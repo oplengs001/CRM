@@ -1,0 +1,2002 @@
+    <head>
+        <meta charset="utf-8" />
+        <title>Pro Source Global BPO | Admin Dashboard</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
+        <meta content="" name="description" />
+        <meta content="" name="author" />
+        <!-- BEGIN GLOBAL MANDATORY STYLES -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
+        <link href="../../../assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+        <link href="../../../assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+        <link href="../../../assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="../../../../assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
+        <!-- END GLOBAL MANDATORY STYLES -->
+        <!-- BEGIN PAGE LEVEL PLUGINS -->
+        <!-- END PAGE LEVEL PLUGINS -->
+        <!-- BEGIN THEME GLOBAL STYLES -->
+        <link href="../../../assets/global/css/components-md.min.css" rel="stylesheet" id="style_components" type="text/css" />
+        <link href="../../../assets/global/css/plugins-md.min.css" rel="stylesheet" type="text/css" />
+        <!-- END THEME GLOBAL STYLES -->
+        <!-- BEGIN THEME LAYOUT STYLES -->
+        <link href="../../../assets/layouts/layout/css/layout.min.css" rel="stylesheet" type="text/css" />
+        <link href="../../../assets/layouts/layout/css/themes/darkblue.min.css" rel="stylesheet" type="text/css" id="style_color" />
+        <link href="../../../assets/layouts/layout/css/custom.min.css" rel="stylesheet" type="text/css" />
+        <link href="../../../css/style.css" rel="stylesheet" type="text/css">
+        <link href="../../../assets/apps/css/todo-2.min.css" rel="stylesheet" type="text/css" />
+        <link href='../../../css/jquery.mentionsInput.css' rel='stylesheet' type='text/css'>
+        <!-- END THEME LAYOUT STYLES -->
+        <link rel="shortcut icon" href="favicon.ico" /> </head>
+    <!-- END HEAD -->
+
+    <body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white page-md">
+        <!-- BEGIN HEADER -->
+        {{> header}}
+        <!-- END HEADER -->
+        <!-- BEGIN HEADER & CONTENT DIVIDER -->
+        <div class="clearfix"> </div>
+        <!-- END HEADER & CONTENT DIVIDER -->
+        <!-- BEGIN CONTAINER -->
+        <div class="page-container">
+            <!-- BEGIN SIDEBAR -->
+            <div class="page-sidebar-wrapper">
+                <!-- BEGIN SIDEBAR -->
+                <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
+                <!-- DOC: Change data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+                {{> navbar}}
+                <!-- END SIDEBAR -->
+            </div>
+            <!-- END SIDEBAR -->
+            <!-- BEGIN CONTENT -->
+            <div class="page-content-wrapper">
+                <!-- BEGIN CONTENT BODY -->
+                <div class="page-content">
+                    <!-- BEGIN PAGE HEADER-->
+                    <!-- BEGIN THEME PANEL -->
+                    <div class="theme-panel hidden-xs hidden-sm">
+                        <button class="btn btn-primary pull-right" data-target="#AccUpMod" data-toggle="modal" id="UpdateAccModal">Update Account</button>
+                    </div>
+
+                    <div class="modal fade" id="AccUpMod" tabindex="-1" role="editAccountModal" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                    <h4 class="modal-title">Edit Account<h4>
+                                </div>
+                            <div class="modal-body">
+                                <form role="form" id="formUpdateAccountForm">
+                                    <div class="row">
+                                        <div class="form-body">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Account Name</label>
+                                                    <input type="text" class="form-control" name="UpdateAccountname" id="UpdateAccountname" value="{{accountmodel.account_name}}">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Account Owner</label>
+                                                    <input type="text" class="form-control" name="UpdateAccountOwner" id="UpdateAccountOwner" value="{{accountmodel.account_owner.fullname}}" disabled> 
+                                                    <input type="hidden" id="UpdateAccountOwnerId" value="{{accountmodel.account_owner._id}}">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Type</label>
+                                                    <select class="form-control" name="UpdateAccountType" id="UpdateAccountType">
+                                                        <option value="none">-- None --</option>
+                                                        <option value="Analyst">Analyst</option>
+                                                        <option value="Competitor">Competitor</option>
+                                                        <option value="Customer">Customer</option>
+                                                        <option value="Integration">Integration</option>
+                                                        <option value="Investor">Investor</option>
+                                                        <option value="Partner">Partner</option>
+                                                        <option value="Press">Press</option>
+                                                        <option value="Prospect">Prospect</option>
+                                                        <option value="Reseller">Reseller</option>
+                                                        <option value="Other">Other</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Website</label>
+                                                    <input type="text" class="form-control" name="UpdateWebsiteUrl" id="UpdateWebsiteUrl" value="{{accountmodel.website_url}}" placeholder=""> 
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Phone</label>
+                                                    <input type="text" class="form-control" name="UpdatePhoneNumber" id="UpdatePhoneNumber" value="{{accountmodel.phone_number}}" placeholder=""> 
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                     <label>Industry</label>
+                                                    <select class="form-control" id="UpdateIndustry" name="UpdateIndustry">
+                                                        <option value>-- Select --</option>
+                                                        <option value="Agriculture">Agriculture</option>
+                                                        <option value="Apparel">Apparel</option>
+                                                        <option value="Banking">Banking</option>
+                                                        <option value="Biotechnology">Biotechnology</option>
+                                                        <option value="Chemicals">Chemicals</option>
+                                                        <option value="Communications">Communications</option>
+                                                        <option value="Construction">Construction</option>
+                                                        <option value="Consulting">Consulting</option>
+                                                        <option value="Education">Education</option>
+                                                        <option value="Electronics">Electronics</option>
+                                                        <option value="Energy">Energy</option>
+                                                        <option value="Engineering">Engineering</option>
+                                                        <option value="Entertainment">Entertainment</option>
+                                                        <option value="Environmental">Environmental</option>
+                                                        <option value="Finance">Finance</option>
+                                                        <option value="Food Beverage">Food Beverage</option>
+                                                        <option value="Government">Government</option>
+                                                        <option value="Healthcare">Healthcare</option>
+                                                        <option value="Hospitality">Hospitality</option>
+                                                        <option value="Insurance">Insurance</option>
+                                                        <option value="Machinery">Machinery</option>
+                                                        <option value="Manufacturing">Manufacturing</option>
+                                                        <option value="Media">Media</option>
+                                                        <option value="Not For Profit">Not For Profit</option>
+                                                         <option value="Healthcare">Healthcare</option>
+                                                         <option value="Recreation">Recreation</option>
+                                                         <option value="Retail">Retail</option>
+                                                         <option value="Shipping">Shipping</option>
+                                                         <option value="Technology">Technology</option>
+                                                         <option value="Telecommunications">Telecommunications</option>
+                                                         <option value="Transportation">Transportation</option>
+                                                         <option value="Utilities">Utilities</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>No. of employees</label>
+                                                   <select class="form-control" id="UpdateNumberEmployees" name="UpdateNumberEmployees">
+                                                       <option value>-- Select --</option>
+                                                       <option value="1-5">1-5</option>
+                                                       <option value="6-25">6-25</option>
+                                                       <option value="26-50">26-50</option>
+                                                       <option value="51-100">51-100</option>
+                                                       <option value="101-300">101-300</option>
+                                                       <option value="301-1000">301-1000</option>
+                                                       <option value="1000+">1000+</option>
+                                                   </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Address</label>
+                                                    <input class="form-control" type="text" placeholder="Address" name="UpdateeAddress" id="UpdateeAddress" value="{{accountmodel.address}}" /> 
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>City/Town</label>
+                                                    <input class="form-control" type="text" placeholder="City/Town" name="UpdateCity" id="UpdateCity" value="{{accountmodel.city}}" /> 
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Country</label>
+                                                    <select name="UpdateCountry" id="UpdateCountry" class="form-control">
+                                                        <option value="">Country</option>
+                                                        <option value="AF">Afghanistan</option>
+                                                        <option value="AL">Albania</option>
+                                                        <option value="DZ">Algeria</option>
+                                                        <option value="AS">American Samoa</option>
+                                                        <option value="AD">Andorra</option>
+                                                        <option value="AO">Angola</option>
+                                                        <option value="AI">Anguilla</option>
+                                                        <option value="AR">Argentina</option>
+                                                        <option value="AM">Armenia</option>
+                                                        <option value="AW">Aruba</option>
+                                                        <option value="AU">Australia</option>
+                                                        <option value="AT">Austria</option>
+                                                        <option value="AZ">Azerbaijan</option>
+                                                        <option value="BS">Bahamas</option>
+                                                        <option value="BH">Bahrain</option>
+                                                        <option value="BD">Bangladesh</option>
+                                                        <option value="BB">Barbados</option>
+                                                        <option value="BY">Belarus</option>
+                                                        <option value="BE">Belgium</option>
+                                                        <option value="BZ">Belize</option>
+                                                        <option value="BJ">Benin</option>
+                                                        <option value="BM">Bermuda</option>
+                                                        <option value="BT">Bhutan</option>
+                                                        <option value="BO">Bolivia</option>
+                                                        <option value="BA">Bosnia and Herzegowina</option>
+                                                        <option value="BW">Botswana</option>
+                                                        <option value="BV">Bouvet Island</option>
+                                                        <option value="BR">Brazil</option>
+                                                        <option value="IO">British Indian Ocean Territory</option>
+                                                        <option value="BN">Brunei Darussalam</option>
+                                                        <option value="BG">Bulgaria</option>
+                                                        <option value="BF">Burkina Faso</option>
+                                                        <option value="BI">Burundi</option>
+                                                        <option value="KH">Cambodia</option>
+                                                        <option value="CM">Cameroon</option>
+                                                        <option value="CA">Canada</option>
+                                                        <option value="CV">Cape Verde</option>
+                                                        <option value="KY">Cayman Islands</option>
+                                                        <option value="CF">Central African Republic</option>
+                                                        <option value="TD">Chad</option>
+                                                        <option value="CL">Chile</option>
+                                                        <option value="CN">China</option>
+                                                        <option value="CX">Christmas Island</option>
+                                                        <option value="CC">Cocos (Keeling) Islands</option>
+                                                        <option value="CO">Colombia</option>
+                                                        <option value="KM">Comoros</option>
+                                                        <option value="CG">Congo</option>
+                                                        <option value="CD">Congo, the Democratic Republic of the</option>
+                                                        <option value="CK">Cook Islands</option>
+                                                        <option value="CR">Costa Rica</option>
+                                                        <option value="CI">Cote d'Ivoire</option>
+                                                        <option value="HR">Croatia (Hrvatska)</option>
+                                                        <option value="CU">Cuba</option>
+                                                        <option value="CY">Cyprus</option>
+                                                        <option value="CZ">Czech Republic</option>
+                                                        <option value="DK">Denmark</option>
+                                                        <option value="DJ">Djibouti</option>
+                                                        <option value="DM">Dominica</option>
+                                                        <option value="DO">Dominican Republic</option>
+                                                        <option value="EC">Ecuador</option>
+                                                        <option value="EG">Egypt</option>
+                                                        <option value="SV">El Salvador</option>
+                                                        <option value="GQ">Equatorial Guinea</option>
+                                                        <option value="ER">Eritrea</option>
+                                                        <option value="EE">Estonia</option>
+                                                        <option value="ET">Ethiopia</option>
+                                                        <option value="FK">Falkland Islands (Malvinas)</option>
+                                                        <option value="FO">Faroe Islands</option>
+                                                        <option value="FJ">Fiji</option>
+                                                        <option value="FI">Finland</option>
+                                                        <option value="FR">France</option>
+                                                        <option value="GF">French Guiana</option>
+                                                        <option value="PF">French Polynesia</option>
+                                                        <option value="TF">French Southern Territories</option>
+                                                        <option value="GA">Gabon</option>
+                                                        <option value="GM">Gambia</option>
+                                                        <option value="GE">Georgia</option>
+                                                        <option value="DE">Germany</option>
+                                                        <option value="GH">Ghana</option>
+                                                        <option value="GI">Gibraltar</option>
+                                                        <option value="GR">Greece</option>
+                                                        <option value="GL">Greenland</option>
+                                                        <option value="GD">Grenada</option>
+                                                        <option value="GP">Guadeloupe</option>
+                                                        <option value="GU">Guam</option>
+                                                        <option value="GT">Guatemala</option>
+                                                        <option value="GN">Guinea</option>
+                                                        <option value="GW">Guinea-Bissau</option>
+                                                        <option value="GY">Guyana</option>
+                                                        <option value="HT">Haiti</option>
+                                                        <option value="HM">Heard and Mc Donald Islands</option>
+                                                        <option value="VA">Holy See (Vatican City State)</option>
+                                                        <option value="HN">Honduras</option>
+                                                        <option value="HK">Hong Kong</option>
+                                                        <option value="HU">Hungary</option>
+                                                        <option value="IS">Iceland</option>
+                                                        <option value="IN">India</option>
+                                                        <option value="ID">Indonesia</option>
+                                                        <option value="IR">Iran (Islamic Republic of)</option>
+                                                        <option value="IQ">Iraq</option>
+                                                        <option value="IE">Ireland</option>
+                                                        <option value="IL">Israel</option>
+                                                        <option value="IT">Italy</option>
+                                                        <option value="JM">Jamaica</option>
+                                                        <option value="JP">Japan</option>
+                                                        <option value="JO">Jordan</option>
+                                                        <option value="KZ">Kazakhstan</option>
+                                                        <option value="KE">Kenya</option>
+                                                        <option value="KI">Kiribati</option>
+                                                        <option value="KP">Korea, Democratic People's Republic of</option>
+                                                        <option value="KR">Korea, Republic of</option>
+                                                        <option value="KW">Kuwait</option>
+                                                        <option value="KG">Kyrgyzstan</option>
+                                                        <option value="LA">Lao People's Democratic Republic</option>
+                                                        <option value="LV">Latvia</option>
+                                                        <option value="LB">Lebanon</option>
+                                                        <option value="LS">Lesotho</option>
+                                                        <option value="LR">Liberia</option>
+                                                        <option value="LY">Libyan Arab Jamahiriya</option>
+                                                        <option value="LI">Liechtenstein</option>
+                                                        <option value="LT">Lithuania</option>
+                                                        <option value="LU">Luxembourg</option>
+                                                        <option value="MO">Macau</option>
+                                                        <option value="MK">Macedonia, The Former Yugoslav Republic of</option>
+                                                        <option value="MG">Madagascar</option>
+                                                        <option value="MW">Malawi</option>
+                                                        <option value="MY">Malaysia</option>
+                                                        <option value="MV">Maldives</option>
+                                                        <option value="ML">Mali</option>
+                                                        <option value="MT">Malta</option>
+                                                        <option value="MH">Marshall Islands</option>
+                                                        <option value="MQ">Martinique</option>
+                                                        <option value="MR">Mauritania</option>
+                                                        <option value="MU">Mauritius</option>
+                                                        <option value="YT">Mayotte</option>
+                                                        <option value="MX">Mexico</option>
+                                                        <option value="FM">Micronesia, Federated States of</option>
+                                                        <option value="MD">Moldova, Republic of</option>
+                                                        <option value="MC">Monaco</option>
+                                                        <option value="MN">Mongolia</option>
+                                                        <option value="MS">Montserrat</option>
+                                                        <option value="MA">Morocco</option>
+                                                        <option value="MZ">Mozambique</option>
+                                                        <option value="MM">Myanmar</option>
+                                                        <option value="NA">Namibia</option>
+                                                        <option value="NR">Nauru</option>
+                                                        <option value="NP">Nepal</option>
+                                                        <option value="NL">Netherlands</option>
+                                                        <option value="AN">Netherlands Antilles</option>
+                                                        <option value="NC">New Caledonia</option>
+                                                        <option value="NZ">New Zealand</option>
+                                                        <option value="NI">Nicaragua</option>
+                                                        <option value="NE">Niger</option>
+                                                        <option value="NG">Nigeria</option>
+                                                        <option value="NU">Niue</option>
+                                                        <option value="NF">Norfolk Island</option>
+                                                        <option value="MP">Northern Mariana Islands</option>
+                                                        <option value="NO">Norway</option>
+                                                        <option value="OM">Oman</option>
+                                                        <option value="PK">Pakistan</option>
+                                                        <option value="PW">Palau</option>
+                                                        <option value="PA">Panama</option>
+                                                        <option value="PG">Papua New Guinea</option>
+                                                        <option value="PY">Paraguay</option>
+                                                        <option value="PE">Peru</option>
+                                                        <option value="PH">Philippines</option>
+                                                        <option value="PN">Pitcairn</option>
+                                                        <option value="PL">Poland</option>
+                                                        <option value="PT">Portugal</option>
+                                                        <option value="PR">Puerto Rico</option>
+                                                        <option value="QA">Qatar</option>
+                                                        <option value="RE">Reunion</option>
+                                                        <option value="RO">Romania</option>
+                                                        <option value="RU">Russian Federation</option>
+                                                        <option value="RW">Rwanda</option>
+                                                        <option value="KN">Saint Kitts and Nevis</option>
+                                                        <option value="LC">Saint LUCIA</option>
+                                                        <option value="VC">Saint Vincent and the Grenadines</option>
+                                                        <option value="WS">Samoa</option>
+                                                        <option value="SM">San Marino</option>
+                                                        <option value="ST">Sao Tome and Principe</option>
+                                                        <option value="SA">Saudi Arabia</option>
+                                                        <option value="SN">Senegal</option>
+                                                        <option value="SC">Seychelles</option>
+                                                        <option value="SL">Sierra Leone</option>
+                                                        <option value="SG">Singapore</option>
+                                                        <option value="SK">Slovakia (Slovak Republic)</option>
+                                                        <option value="SI">Slovenia</option>
+                                                        <option value="SB">Solomon Islands</option>
+                                                        <option value="SO">Somalia</option>
+                                                        <option value="ZA">South Africa</option>
+                                                        <option value="GS">South Georgia and the South Sandwich Islands</option>
+                                                        <option value="ES">Spain</option>
+                                                        <option value="LK">Sri Lanka</option>
+                                                        <option value="SH">St. Helena</option>
+                                                        <option value="PM">St. Pierre and Miquelon</option>
+                                                        <option value="SD">Sudan</option>
+                                                        <option value="SR">Suriname</option>
+                                                        <option value="SJ">Svalbard and Jan Mayen Islands</option>
+                                                        <option value="SZ">Swaziland</option>
+                                                        <option value="SE">Sweden</option>
+                                                        <option value="CH">Switzerland</option>
+                                                        <option value="SY">Syrian Arab Republic</option>
+                                                        <option value="TW">Taiwan, Province of China</option>
+                                                        <option value="TJ">Tajikistan</option>
+                                                        <option value="TZ">Tanzania, United Republic of</option>
+                                                        <option value="TH">Thailand</option>
+                                                        <option value="TG">Togo</option>
+                                                        <option value="TK">Tokelau</option>
+                                                        <option value="TO">Tonga</option>
+                                                        <option value="TT">Trinidad and Tobago</option>
+                                                        <option value="TN">Tunisia</option>
+                                                        <option value="TR">Turkey</option>
+                                                        <option value="TM">Turkmenistan</option>
+                                                        <option value="TC">Turks and Caicos Islands</option>
+                                                        <option value="TV">Tuvalu</option>
+                                                        <option value="UG">Uganda</option>
+                                                        <option value="UA">Ukraine</option>
+                                                        <option value="AE">United Arab Emirates</option>
+                                                        <option value="GB">United Kingdom</option>
+                                                        <option value="US">United States</option>
+                                                        <option value="UM">United States Minor Outlying Islands</option>
+                                                        <option value="UY">Uruguay</option>
+                                                        <option value="UZ">Uzbekistan</option>
+                                                        <option value="VU">Vanuatu</option>
+                                                        <option value="VE">Venezuela</option>
+                                                        <option value="VN">Viet Nam</option>
+                                                        <option value="VG">Virgin Islands (British)</option>
+                                                        <option value="VI">Virgin Islands (U.S.)</option>
+                                                        <option value="WF">Wallis and Futuna Islands</option>
+                                                        <option value="EH">Western Sahara</option>
+                                                        <option value="YE">Yemen</option>
+                                                        <option value="ZM">Zambia</option>
+                                                        <option value="ZW">Zimbabwe</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label>Description</label>
+                                                    <textarea class="form-control" name="UpdateDescription" rows="3" id="UpdateDescription"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn dark btn-outline closemodal" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn green" id="updataAccBtn">Update</button>
+                                </div>
+                                </form>
+                            </div>
+                            <!-- /.modal-content -->
+                            </div>
+                        <!-- /.modal-dialog -->
+                        </div>
+                    </div>
+
+                    <!-- END THEME PANEL -->
+                    <!-- BEGIN PAGE BAR -->
+                    <div class="page-bar">
+                        <ul class="page-breadcrumb">
+                            <li>
+                                <a href="index.html">Home</a>
+                                <i class="fa fa-circle"></i>
+                            </li>
+                            <li>
+                                <span>Account</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- END PAGE BAR -->
+                    <!-- BEGIN PAGE TITLE-->
+                    <h3 class="page-title"> Accounts
+                    </h3>
+                    <!-- END PAGE TITLE-->
+                    <!-- END PAGE HEADER-->
+                    <div class="profile-content">
+                        <!-- start of row --> 
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="portlet light">
+                                    <div class="portlet-title tabbable-line" id="MenuBarList">
+                                        <div class="caption caption-md">
+                                            <i class="icon-globe theme-font hide"></i>
+                                            <span class="caption-subject font-blue-madison bold uppercase">
+                                                {{accountmodel.account_name}}
+                                            </span>
+                                        </div>
+                                        <ul class="nav nav-tabs" id="profileForm">
+                                            <li class="active">
+                                                <a href="#activityTab" data-toggle="tab">Activity</a>
+                                            </li>
+                                            <li>
+                                                <a href="#collaborateTab" data-toggle="tab">Collaborate</a>
+                                            </li>
+                                            <li>
+                                                <a href="#detailsTab" data-toggle="tab">Details</a>
+                                            </li>
+                                            <li>
+                                                <a href="#relatedTabs" data-toggle="tab">Related</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end of row -->  
+
+                        <!-- start of row --> 
+                        <div class="row">
+                            <!-- sidebar -->
+                            <div class="col-md-3">
+                                <div class="todo-sidebar">
+                                    <div class="portlet light ">
+                                        <div class="portlet-title">
+                                            <div class="caption" data-toggle="collapse" data-target=".todo-project-list-content">
+                                                <span class="caption-subject font-green-sharp bold uppercase">Campaigns </span>
+                                                <span class="caption-helper visible-sm-inline-block visible-xs-inline-block">click to view project list</span>
+                                            </div>
+                                            <div class="actions">
+                                                <div class="btn-group">
+                                                    <a class="btn green btn-circle btn-outline btn-sm todo-projects-config" href="javascript:;" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                                        <i class="icon-settings"></i> &nbsp;
+                                                        <i class="fa fa-angle-down"></i>
+                                                    </a>
+                                                    <ul class="dropdown-menu pull-right">
+                                                        <li>
+                                                            <a data-toggle="modal" href="#basic"> Add Campaign </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="portlet-body todo-project-list-content">
+                                            <div class="todo-project-list">
+                                                <ul class="nav nav-stacked" id="listCampaignData">
+                                                    {{#each campaignData}}
+                                                        <li>
+                                                            <a href="/admin/campaigns/show_campaign/{{_id}}">
+                                                                <span class="badge badge-info">1</span>
+                                                                {{team_name}}
+                                                            </a>
+                                                        </li>
+                                                    {{/each}}
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end of sidebar -->
+                            
+                            <div class="tab-content">
+                                <!-- start activityTab -->
+                                <div class="tab-pane active" id="activityTab">
+                                    <div class="col-md-5">
+                                        <div class="portlet light">
+                                            <div class="portlet-title tabbable-line">
+                                                <div class="caption caption-md">
+                                                    <i class="icon-globe theme-font hide"></i>
+                                                    <span class="caption-subject font-blue-madison bold uppercase">Activity</span>
+                                                </div>
+                                                <ul class="nav nav-tabs">
+                                                    <li class="active">
+                                                        <a href="#log_email" data-toggle="tab">Log an Email</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#log_a_call" data-toggle="tab">Log a Call</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#newTask" data-toggle="tab">Create a Task</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="portlet-body">
+                                                <div class="tab-content">
+                                                    <!-- start log_email -->
+                                                    <div class="tab-pane active" id="log_email">
+                                                        <form>
+                                                            <div class="form-group">
+                                                                <div class="alert alert-danger tagUser">Please Tag a User eg: @name</div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="subjectLAC">Subject</label>
+                                                                <input type="text" class="form-control" id="subjectLogEmail" name="subjectLogEmail" value="Email">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="CommentsLAC">Comments</label>
+                                                                <textarea name="CommentsLogEmail" id="CommentsLogEmail" class="form-control mention_sample" rows="3"></textarea>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Account</label>
+                                                                <input type="text" class="form-control" name="AccountLAC" value="{{accountmodel.account_name}}" disabled>
+                                                                <input type="hidden" class="form-control" value="{{accountmodel._id}}" name="accountIDLogEmail" id="accountIDLogEmail">
+                                                            </div>
+                                                            <div class="margiv-top-10">
+                                                                <button type="button" class="btn green" id="logEmailBtn"> Save </button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                    <!-- end of log_email -->
+                                                    <!-- start log_a_call -->
+                                                    <div class="tab-pane" id="log_a_call">
+                                                        <form>
+                                                            <div class="form-group">
+                                                                <div class="alert alert-danger logAcallTagUser">Please Tag a User eg: @name</div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="subjectLAC">Subject</label>
+                                                                <input type="text" class="form-control" id="subjectLAC" name="subjectLAC" value="Call">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="CommentsLAC">Comments</label>
+                                                                <textarea name="CommentsLAC" id="CommentsLAC" class="form-control mention_sample" rows="3"></textarea>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="AccountLAC">Account</label>
+                                                                <input type="text" class="form-control" name="AccountLAC" value="{{accountmodel.account_name}}" disabled>
+                                                                <input type="hidden" class="form-control" value="{{accountmodel._id}}" name="accountIDLAC" id="accountIDLAC">
+                                                            </div>
+                                                            <div class="margiv-top-10">
+                                                                <button type="button" class="btn green" id="locBtn"> Save </button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                    <!-- end log_a_call -->
+                                                    <!-- newTask -->
+                                                    <div class="tab-pane" id="newTask">
+                                                        <div class="scroller" style="height: 337px;" data-always-visible="1" data-rail-visible1="0" data-handle-color="#D7DCE2">
+                                                            <form id="addAccountTaskForm">
+                                                                <div class="row">
+                                                                    <div class="col-md-12"> 
+                                                                        <div class="form-group">
+                                                                            <label for="subjectTask">Subject</label>
+                                                                            <input type="text" class="form-control" id="subjectTask" name="subjectTask">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-12">
+                                                                        <div class="form-group">
+                                                                            <label for="taskAccount">Account</label>
+                                                                            <input type="text" class="form-control" id="taskAccount" name="taskAccount" value="{{accountmodel.account_name}}" disabled>
+                                                                            <input type="hidden" class="form-control" id="taskAccountID" name="taskAccountID" value="{{account_id}}">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group">
+                                                                            <label>Kick Off</label>
+                                                                            <input type="text" class="form-control date-picker" id="kickoffDate" name="kickoffDate">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group">
+                                                                            <label for="dueDateTask">Due Date</label>
+                                                                            <input type="text" class="form-control date-picker" id="dueDateTask" name="dueDateTask">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-12">
+                                                                        <div class="form-group">
+                                                                            <label for="commentsTask">Comments</label>
+                                                                            <textarea name="commentsTask" id="commentsTask" class="form-control" rows="3"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                   <div class="col-md-6">
+                                                                       <div class="form-group">
+                                                                           <label>Priority</label>
+                                                                           <select name="priority" id="priority" class="form-control">
+                                                                               <option value>-- None --</option>
+                                                                               <option value="Normal">Normal</option>
+                                                                               <option value="High">High</option>
+                                                                           </select>
+                                                                       </div>
+                                                                   </div>
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group">
+                                                                            <label>Status</label>
+                                                                            <select name="status" id="status" class="form-control">
+                                                                                <option value>-- None --</option>
+                                                                                <option value="Open">Open</option>
+                                                                                <option value="Completed">Completed</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-12">
+                                                                        <div class="form-group">
+                                                                            <label>Assigned</label>
+                                                                            <select name="assigned" id="assigned" class="form-control">
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-12">
+                                                                        <div class="margiv-top-10">
+                                                                            <button type="button" class="btn green" id="taskBtn"> Save </button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                    <!-- newTask -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="portlet light">
+                                            <div class="portlet-title tabbable-line">
+                                                <div class="caption caption-md">
+                                                    <i class="icon-globe theme-font hide"></i>
+                                                    <span class="caption-subject font-blue-madison bold uppercase">Feed</span>
+                                                </div>
+                                                <ul class="nav nav-tabs">
+                                                    <li class="active">
+                                                        <a href="#log_email_feed" data-toggle="tab">Emails</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#log_a_call_feed" data-toggle="tab">Calls</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#new_tasks_feed" data-toggle="tab">Tasks</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="tab-content">
+    
+                                                <div class="tab-pane active" id="log_email_feed">
+                                                    <div class="scroller" style="height: 337px;" data-always-visible="1" data-rail-visible1="0" data-handle-color="#D7DCE2">
+                                                    <div class="todo-tasklist" id="logEmailItems">
+                                                        {{#each accountLogemail}}
+                                                        <div class="todo-tasklist-item todo-tasklist-item-border-red" data-id="{{_id}}">
+                                                            <img class="todo-userpic pull-left" src="{{created_by.path}}" width="27px" height="27px">
+                                                            <div class="todo-tasklist-item-title">
+                                                                {{created_by.fullname}}
+                                                            </div>
+                                                            <strong>
+                                                            {{subject}}
+                                                            </strong>
+                                                            <div class="todo-tasklist-item-text" style="white-space: pre;">{{comments}}</div>
+                                                            <div class="todo-tasklist-controls pull-left">
+                                                            <span class="todo-tasklist-date">
+                                                                <i class="fa fa-calendar"></i>
+                                                                {{AccountLogEmailTime}}
+                                                            </span>
+                                                            </div>
+                                                            <div class="todo-tasklist-controls pull-right">
+                                                            <span class="todo-tasklist-badge badge badge-roundless label-info pull-right">
+                                                                {{priority}}
+                                                            </span>
+                                                            <span class="todo-tasklist-badge badge badge-roundless label-success pull-right" style="margin-right: 5px;">
+                                                                {{status}}
+                                                            </span>
+                                                            </div>
+                                                            </div>
+                                                        {{/each}}
+                                                    </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="tab-pane" id="log_a_call_feed">
+                                                    <div class="scroller" style="height: 337px;" data-always-visible="1" data-rail-visible1="0" data-handle-color="#D7DCE2">
+                                                    <div class="todo-tasklist" id="logacallitems">
+                                                        {{#each accountLogCall}}
+                                                        <div class="todo-tasklist-item todo-tasklist-item-border-green" data-id="{{_id}}">
+                                                            <img class="todo-userpic pull-left" src="{{created_by.path}}" width="27px" height="27px">
+                                                            <div class="todo-tasklist-item-title">
+                                                                {{created_by.fullname}}
+                                                            </div>
+                                                            <strong>
+                                                            {{subject}}
+                                                            </strong>
+                                                            <div class="todo-tasklist-item-text" style="white-space: pre;">{{comments}}</div>
+                                                            <div class="todo-tasklist-controls pull-left">
+                                                            <span class="todo-tasklist-date">
+                                                                <i class="fa fa-calendar"></i>
+                                                                {{AccountLogCallTime}}
+                                                            </span>
+                                                            </div>
+                                                            <div class="todo-tasklist-controls pull-right">
+                                                            <span class="todo-tasklist-badge badge badge-roundless label-info pull-right">
+                                                                {{priority}}
+                                                            </span>
+                                                            <span class="todo-tasklist-badge badge badge-roundless label-success pull-right" style="margin-right: 5px;">
+                                                                {{status}}
+                                                            </span>
+                                                            </div>
+                                                            </div>
+                                                        {{/each}}
+                                                    </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="modal fade" id="code1" tabindex="-1" role="code1" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                                                <h4 class="modal-title">Log Calls<h4>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <form id="logEmailForm">
+                                                                    <div class="row">
+                                                                        <div class="col-md-12">
+                                                                          <div class="form-group">
+                                                                              <label>Subject</label>
+                                                                              <input type="text" class="form-control" id="updateSubjectLOC" name="updateSubjectLOC" value="Call" readonly>
+                                                                              <input type="hidden" class="form-control" id="logEmailID">
+                                                                          </div>  
+                                                                        </div>
+                                                                        <div class="col-md-12">
+                                                                          <div class="form-group">
+                                                                              <label>Comments</label>
+                                                                              <textarea name="updateCommentLAC" id="updateCommentLAC" class="form-control mention_sample" rows="3" readonly></textarea>
+                                                                              <input type="hidden" id="updateAssignedLAC">
+                                                                          </div>  
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                          <div class="form-group">
+                                                                              <label>Priority</label>
+                                                                              <select name="updatePrioryLAC" id="updatePrioryLAC" class="form-control" readonly>
+                                                                                  <option value="None">-- None --</option>
+                                                                                  <option value="Normal">Normal</option>
+                                                                                  <option value="High">High</option>
+                                                                              </select>
+                                                                          </div>  
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label>Status</label>
+                                                                                <select name="updateStatusLAC" id="updateStatusLAC" class="form-control" readonly>
+                                                                                    <option value="None">-- None --</option>
+                                                                                    <option value="Open">Open</option>
+                                                                                    <option value="Complete">Complete</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-12">
+                                                                            <div class="form-group">
+                                                                                <label for="AccountLAC">Account</label>
+                                                                                <input type="text" class="form-control" id="UpdateAccountLAC" name="UpdateAccountLAC" disabled>
+                                                                                <input type="hidden" class="form-control" id="UpdateAccountIDLAC" name="UpdateAccountIDLAC">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn red" style="float:left;" id="deleteLAC">Delete</button>
+                                                                <button type="button" class="btn dark btn-outline" data-dismiss="modal">Close</button>
+                                                                <button type="button" class="btn green" id="UpdateLAC">Save Changes</button>
+                                                            </div>
+                                                        </div>
+                                                        <!-- /.modal-content -->
+                                                    </div>
+                                                    <!-- /.modal-dialog -->
+                                                </div>
+                                                <button style="display:none;" id="ShowLACBTN" data-toggle="modal" data-target="#code1">Show Button</button>
+
+                                                <div class="tab-pane" id="new_tasks_feed">
+                                                    <div class="scroller" style="height: 337px;" data-always-visible="1" data-rail-visible1="0" data-handle-color="#D7DCE2">
+                                                    <div class="todo-tasklist" id="taskFeedItem">
+                                                        {{#each accountTaskLog}}
+                                                        <div class="todo-tasklist-item todo-tasklist-item-border-yellow" id="showTasks" data-id="{{_id}}">
+                                                        <img class="todo-userpic pull-left" src="{{created_by.path}}" width="27px" height="27px">
+                                                        <div class="todo-tasklist-item-title">
+                                                        {{created_by.fullname}}
+                                                        </div>
+                                                        <div class=""><strong>{{subject}}</strong></div>
+                                                        <div class="todo-tasklist-item-text">{{comments}}</div>
+                                                        <div class="todo-tasklist-item-text"><strong>Assigned to: </strong>{{assigned.fullname}}</div>
+                                                        <div class="todo-tasklist-controls pull-left">
+                                                        <span class="todo-tasklist-date">
+                                                        <i class="fa fa-calendar"></i>
+                                                        {{accountTasksTime}}</span>
+                                                        <span class="todo-tasklist-badge badge badge-roundless label-success">{{priority}}</span>&nbsp;
+                                                        <span class="todo-tasklist-badge badge badge-roundless label-info">{{status}}</span>&nbsp;
+                                                        </div>
+                                                        </div>
+                                                        {{/each}}
+                                                    </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end of activityTab -->
+                                <!-- collaboratetab -->
+                                <div class="tab-pane" id="collaborateTab">
+                                   <div class="col-md-4">
+                                       <div class="portlet light">
+                                           <div class="portlet-title tabbable-line">
+                                               <div class="caption caption-md">
+                                                   <i class="icon-globe theme-font hide"></i>
+                                                   <span class="caption-subject font-blue-madison bold uppercase">Collaborate</span>
+                                               </div>
+                                           </div>
+                                           <div class="portlet-body">
+
+                                              <div class="row">
+                                                  <form id="sharePostForm"> <!-- form open -->
+                                                      <div class="form"> <!-- form container -->
+                                                          <div class="form-group">
+                                                              <div class="col-md-12 col-sm-12" style="padding-bottom: 5%;">
+                                                                  <div class="todo-taskbody-user">
+                                                                      <img class="todo-userpic pull-left" src="{{userImgPath}}" width="50px" height="50px">
+                                                                      <span class="todo-username pull-left">{{userName}}</span>
+                                                                  </div>
+                                                              </div>
+                                                          </div>
+                                                          <!-- END TASK HEAD -->
+                                                          <div class="form-group">
+                                                              <div class="col-md-12">
+                                                                  <input type="hidden" value="{{userid}}" id="userId">
+                                                                  <textarea class="form-control todo-taskbody-taskdesc" rows="3" placeholder="Share an Update..." id="postField" name="postField"></textarea>
+                                                              </div>
+                                                          </div>
+                                                          <!-- END TASK DESC -->
+                                                          <div class="form-actions right todo-form-actions">
+                                                              <div class="col-md-12" style="padding-top: 5%;">
+                                                                  <button type="button" class="btn btn-circle btn-sm green" id="sharePost">Share</button>
+                                                              </div>
+                                                          </div>
+                                                      </div> <!-- form container close -->
+                                                  </form> <!-- form close -->
+                                              </div>
+
+                                           </div>
+                                       </div>
+                                   </div>
+                                   <div class="col-md-5">
+                                       <div class="portlet light">
+                                           <div class="portlet-title tabbable-line">
+                                               <div class="caption caption-md">
+                                                   <i class="icon-globe theme-font hide"></i>
+                                                   <span class="caption-subject font-blue-madison bold uppercase">Post</span>
+                                               </div>
+                                           </div>
+                                           <div class="portlet-body">
+
+                                              <div class="row">
+                                                 <div class="scroller" style="height: 337px;" data-always-visible="1" data-rail-visible1="0" data-handle-color="#D7DCE2">
+                                                    <div class="todo-tasklist" id="postFeed">
+                                                        {{#each accountPost}}
+                                                        <div class="todo-tasklist-item todo-tasklist-item-border-green" id="showTasks" data-id="{{_id}}">
+                                                        <img class="todo-userpic pull-left" src="{{user.path}}" width="27px" height="27px">
+                                                        <div class="todo-tasklist-item-title">
+                                                        {{user.fullname}}
+                                                        </div>
+                                                        <div class="todo-tasklist-item-text">{{post}}</div>
+                                                        <div class="todo-tasklist-controls pull-left">
+                                                        <span class="todo-tasklist-date">
+                                                        <i class="fa fa-calendar"></i>
+                                                        {{accountPostTime}}</span>
+                                                        <span class="todo-tasklist-badge badge badge-roundless label-success">{{priority}}</span>&nbsp;
+                                                        <span class="todo-tasklist-badge badge badge-roundless label-info">{{status}}</span>&nbsp;
+                                                        </div>
+                                                        </div>
+                                                        {{/each}}
+                                                    </div>
+                                                 </div>
+                                              </div>
+
+                                           </div>
+                                       </div>
+                                   </div>
+                                </div>
+                                <!-- end of collaboratetab -->
+                                <!-- detailsTab -->
+                                <div class="tab-pane" id="detailsTab">
+                                    <div class="col-md-9">
+                                        <div class="portlet light">
+                                            <table id="user" class="table table-bordered table-striped">
+                                                <tbody>
+                                                    <tr>
+                                                        <td style="width:15%"> Account Name </td>
+                                                        <td style="width:50%">
+                                                            <a href="javascript:;" id="account_name">
+                                                                {{accountmodel.account_name}}
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Type</td>
+                                                        <td>
+                                                            <a href="javascript:;" id="account_type" >
+                                                                {{accountmodel.account_type}}
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Website </td>
+                                                        <td>
+                                                            <a href="javascript:;" id="account_website">
+                                                                {{accountmodel.website_url}}
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td> Description </td>
+                                                        <td>
+                                                            <a href="javascript:;" id="account_description">
+                                                                {{accountmodel.description}}
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td> Account Owner</td>
+                                                        <td>
+                                                            <a href="javascript:;" id="account_owner">
+                                                                {{accountmodel.account_owner.fullname}}
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td> Phone</td>
+                                                        <td>
+                                                            <a href="javascript:;" id="account_phone">
+                                                                {{accountmodel.phone_number}}
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td> Industry</td>
+                                                        <td>
+                                                            <a href="javascript:;" id="industry">
+                                                                {{accountmodel.industry}}
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td> Address</td>
+                                                        <td>
+                                                            <a href="javascript:;">
+                                                                {{accountmodel.address}}
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td> City</td>
+                                                        <td>
+                                                            <a href="javascript:;" id="industry">
+                                                                {{accountmodel.city}}
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td> Country</td>
+                                                        <td>
+                                                            <a href="javascript:;" id="industry">
+                                                                {{accountmodel.country}}
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td> Number of Employees</td>
+                                                        <td>
+                                                            <a href="javascript:;" id="industry">
+                                                                {{accountmodel.number_of_employees}}
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end of detailsTab -->
+                                <!-- start relatedTabs -->
+                                <div class="tab-pane" id="relatedTabs">
+                                    <div class="col-md-9">
+                                        <div class="portlet light">
+                                            <div class="portlet-body">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="portlet">
+                                                            <div class="portlet-title">
+                                                                <div class="caption">
+                                                                    <i class="fa fa-bell-o"></i>Campaign </div>
+                                                                <div class="tools">
+                                                                    <a href="javascript:;" class="collapse"> </a>
+                                                                    <a href="#portlet-config" data-toggle="modal" class="config"> </a>
+                                                                    <a href="javascript:;" class="reload"> </a>
+                                                                    <a href="javascript:;" class="remove"> </a>
+                                                                </div>
+                                                            </div>
+                                                            <div class="portlet-body">
+                                                                <div class="table-scrollable">
+                                                                    <table class="table table-striped table-bordered table-advance table-hover" id="campaignTable">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th>Campaign Name </th>
+                                                                                <th>Account </th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody id="dataCampaigns">
+                                                                            {{#each campaignData}}
+                                                                                <tr>
+                                                                                    <td class="highlight">
+                                                                                        <a href="javascript:;">{{team_name}}</a>
+                                                                                    </td>
+                                                                                    <td>{{account.account_name}}</td>
+                                                                                </tr>
+                                                                            {{/each}}
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="portlet light">
+                                            <div class="portlet-body">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="portlet">
+                                                            <div class="portlet-title">
+                                                                <div class="caption">
+                                                                    <i class="fa fa-user"></i>Users </div>
+                                                                <div class="tools">
+                                                                    <a href="javascript:;" class="collapse"> </a>
+                                                                    <a href="#portlet-config" data-toggle="modal" class="config"> </a>
+                                                                    <a href="javascript:;" class="reload"> </a>
+                                                                    <a href="javascript:;" class="remove"> </a>
+                                                                </div>
+                                                            </div>
+                                                            <div class="portlet-body">
+                                                                <div class="table-scrollable scroller" style="height: 250px;" data-handle-color="#637283">
+                                                                    <table class="table table-striped table-bordered table-advance table-hover">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th>Fullname</th>
+                                                                                <th>Position </th>
+                                                                                <th>Team</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody id="userList">
+                                                                            {{#each userData}}
+                                                                                <tr>
+                                                                                    <td class="highlight">
+                                                                                    <a href="/admin/users/{{_id}}" target="_blank">{{fullname}}</a>
+                                                                                </td>
+                                                                                <td>{{position}}</td>
+                                                                                <td>{{team.team_name}}</td>
+                                                                                </tr>
+                                                                            {{/each}}
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="portlet light">
+                                            <div class="portlet-body">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="portlet">
+                                                            <div class="portlet-title">
+                                                                <div class="caption">
+                                                                    <i class="fa fa-folder-open"></i>Projects </div>
+                                                                <div class="tools">
+                                                                    <a href="javascript:;" class="collapse"> </a>
+                                                                    <a href="#portlet-config" data-toggle="modal" class="config"> </a>
+                                                                    <a href="javascript:;" class="reload"> </a>
+                                                                    <a href="javascript:;" class="remove"> </a>
+                                                                </div>
+                                                            </div>
+                                                            <div class="portlet-body">
+                                                                <div class="table-scrollable scroller" style="height: 250px;" data-handle-color="#637283">
+                                                                    <table class="table table-striped table-bordered table-advance table-hover">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th>Project Name</th>
+                                                                                <th>Due Date</th>
+                                                                                <th>Created</th>
+                                                                                <th>Status</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody id="projectList">
+                                                                            {{#each projectData}}
+                                                                            <tr>
+                                                                                <td class="highlight">
+                                                                                    <a href="javascript:;">{{project_name}}</a>
+                                                                                </td>
+                                                                                <td>{{ProjectDeadline}}</td>
+                                                                                <td>{{created.fullname}}</td>
+                                                                                <td>{{{ProjectStatus}}}</td>
+                                                                            </tr>
+                                                                            {{/each}}
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="portlet light">
+                                            <div class="portlet-body">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="portlet">
+                                                            <div class="portlet-title">
+                                                                <div class="caption">
+                                                                    <i class="fa fa-folder-open"></i> Opportunities </div>
+                                                                <div class="tools">
+                                                                    <a href="javascript:;" class="collapse"> </a>
+                                                                    <a href="#portlet-config" data-toggle="modal" class="config"> </a>
+                                                                    <a href="javascript:;" class="reload"> </a>
+                                                                    <a href="javascript:;" class="remove"> </a>
+                                                                </div>
+                                                            </div>
+                                                            <div class="portlet-body">
+                                                                <div class="table-scrollable scroller" style="height: 250px;" data-handle-color="#637283">
+                                                                    <table class="table table-striped table-bordered table-advance table-hover">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th>Opportunity</th>
+                                                                                <th>Account</th>
+                                                                                <th>Opportunity Stage</th>
+                                                                                <th>Close Date</th>
+                                                                                <th>Opportunity Owner</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody id="opportunitydatalist">
+                                                                            {{#each oppurtunityData}}
+                                                                            <tr>
+                                                                                <td class="highlight">
+                                                                                    <a href="/admin/opportunity/show_opportunity/{{_id}}" target="_blank">{{oppurtunity_name}}</a>
+                                                                                </td>
+                                                                                <td>{{oppurtunity_account.account_name}}</td>
+                                                                                <td>{{oppurStage}}</td>
+                                                                                <td>{{OppurCloseDate}}</td>
+                                                                                <td>{{oppurtunity_owner.fullname}}</td>
+                                                                            </tr>
+                                                                            {{/each}}
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="portlet light">
+                                            <div class="portlet-body">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="portlet">
+                                                            <div class="portlet-title">
+                                                                <div class="caption">
+                                                                    <i class="fa fa-folder-open"></i> Contacts </div>
+                                                                <div class="tools">
+                                                                    <a href="javascript:;" class="collapse"> </a>
+                                                                    <a href="#portlet-config" data-toggle="modal" class="config"> </a>
+                                                                    <a href="javascript:;" class="reload"> </a>
+                                                                    <a href="javascript:;" class="remove"> </a>
+                                                                </div>
+                                                            </div>
+                                                            <div class="portlet-body">
+                                                                <div class="table-scrollable scroller" style="height: 250px;" data-handle-color="#637283">
+                                                                    <table class="table table-striped table-bordered table-advance table-hover">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th>Name</th>
+                                                                                <th>Phone</th>
+                                                                                <th>Email</th>
+                                                                                <th>Title</th>
+                                                                                <th>Department</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody id="AccountContactList">
+                                                                            {{#each contactData}}
+                                                                            <tr>
+                                                                                <td class="highlight">
+                                                                                    <a href="/admin/contacts/'+queryContact[key]._id+'" target="_blank"  >
+                                                                                        {{contacts_fullname}}
+                                                                                    </a>
+                                                                                </td>
+                                                                                <td>{{contacts_phone}}</td>
+                                                                                <td>{{contacts_email}}</td>
+                                                                                <td>{{contacts_title}}</td>
+                                                                                <td>{{contacts_department}}</td>
+                                                                            </tr>
+                                                                            {{/each}}
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <!-- end of relatedTabs -->
+                            </div>
+                        </div>
+                        <!-- end of row --> 
+                                    
+                                
+                                    
+                    </div>
+                    <div class="modal fade" id="basic" tabindex="-1" role="basic" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                    <h4 class="modal-title">Create New Campaign<h4>
+                                </div>
+                                <div class="modal-body">
+                                    <form>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="team_name" placeholder="Campaign Name" name="team_name">
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn green" id="addteam">Add Campaign</button>
+                                </div>
+                            </div>
+                            <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal-dialog -->
+                    </div>
+    
+                    <div class="modal fade" id="code" tabindex="-1" role="code" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                    <h4 class="modal-title">Log Email<h4>
+                                </div>
+                                <div class="modal-body">
+                                    <form id="LacForm">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="subjectLAC">Subject</label>
+                                                    <input type="text" class="form-control" id="updatesubjectLogEmail" name="updatesubjectLogEmail" value="Call" readonly>
+                                                    <input type="hidden" class="form-control" id="logacallId">
+                                                </div>  
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="CommentsLAC">Comments</label>
+                                                    <textarea name="updateCommentsLogEmail" id="updateCommentsLogEmail" class="form-control mention_sample" rows="3" readonly></textarea>
+                                                    <input type="hidden" id="updateAssignedLogEmail">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Priority</label>
+                                                    <select name="updatePriorityLogEmail" id="updatePriorityLogEmail" class="form-control" readonly>
+                                                        <option value="None">-- None --</option>
+                                                        <option value="Normal">Normal</option>
+                                                        <option value="High">High</option>
+                                                    </select>
+                                                    <input type="hidden" id="updateAssigendLACID">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Status</label>
+                                                    <select name="updateStatusLogEmail" id="updateStatusLogEmail" class="form-control" readonly>
+                                                        <option value="None">-- None --</option>
+                                                        <option value="Open">Open</option>
+                                                        <option value="Complete">Complete</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="AccountLAC">Account</label>
+                                                    <input type="text" class="form-control" id="UpdateAccountLogEmail" name="UpdateAccountLogEmail" disabled>
+                                                    <input type="hidden" class="form-control" id="UpdateAccountIDLogEmail" name="UpdateAccountIDLogEmail">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn red" style="float:left;" id="DeleteLogEmail">Delete</button>
+                                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn green" id="UpdateLogEmail">Save Changes</button>
+                                </div>
+                            </div>
+                            <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal-dialog -->
+                    </div>
+                    <button style="display:none;" id="showLogEmailModal" data-toggle="modal" data-target="#code">Show Button</button>
+
+                    <div class="modal fade" id="taskmodal" tabindex="-1" role="taskmodal" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                    <h4 class="modal-title">Edit Log a Call<h4>
+                                </div>
+                                <div class="modal-body">
+                                    <form id="taskForm">
+                                       <div class="row">
+                                           <div class="col-md-6">
+                                               <div class="form-group">
+                                                   <label for="updatesubjectTask">Subject</label>
+                                                   <input type="text" class="form-control" id="updatesubjectTask" name="updatesubjectTask" readonly>
+                                                   <input type="hidden" class="form-control" id="task_id" name="task_id">
+                                               </div>
+                                           </div>
+                                           <div class="col-md-6">
+                                               <div class="form-group">
+                                                   <label for="updatetaskAccount">Account</label>
+                                                   <input type="text" class="form-control" id="updatetaskAccount" name="updatetaskAccount" value="{{accountmodel.account_name}}" readonly>
+                                                   <input type="hidden" class="form-control" id="updatetaskAccountID" name="updatetaskAccountID" value="{{account_id}}">
+                                               </div>
+                                           </div>
+                                           <div class="col-md-6">
+                                               <div class="form-group">
+                                                   <label for="updateKickOff">Kick Off</label>
+                                                   <input type="text" class="form-control date-picker" id="updateKickOff" name="updateKickOff" readonly>
+                                               </div>
+                                           </div>
+                                           <div class="col-md-6">
+                                               <div class="form-group">
+                                                   <label for="updatedueDateTask">Due Date</label>
+                                                   <input type="text" class="form-control date-picker" id="updatedueDateTask" name="updatedueDateTask" readonly>
+                                               </div>
+                                           </div>
+                                           <div class="col-md-12">
+                                               <div class="form-group">
+                                                   <label for="updatecommentsTask">Comments</label>
+                                                   <textarea name="updatecommentsTask" id="updatecommentsTask" class="form-control" rows="3" readonly></textarea>
+                                               </div>
+                                           </div>
+                                           <div class="col-md-6">
+                                               <div class="form-group">
+                                                   <label>Priority</label>
+                                                   <select name="updatepriority" id="updatepriority" class="form-control" readonly>
+                                                       <option value="None">-- None --</option>
+                                                       <option value="Normal">Normal</option>
+                                                       <option value="High">High</option>
+                                                   </select>
+                                               </div>
+                                           </div>
+                                           <div class="col-md-6">
+                                               <div class="form-group">
+                                                   <label>Status</label>
+                                                   <select name="updatestatus" id="updatestatus" class="form-control" readonly>
+                                                       <option value="None">-- None --</option>
+                                                       <option value="Open">Open</option>
+                                                       <option value="Completed">Completed</option>
+                                                   </select>
+                                               </div>
+                                           </div>
+                                           <div class="col-md-12">
+                                               <div class="form-group">
+                                                   <label>Assigned</label>
+                                                   <select name="updateassigned" id="updateassigned" class="form-control" readonly>
+                                                   </select>
+                                               </div>
+                                           </div>
+                                       </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn red" style="float:left;" id="taskbtndel">Delete</button>
+                                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn green" id="editTaskBtn">Save Changes</button>
+                                </div>
+                            </div>
+                            <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal-dialog -->
+                    </div>
+                    
+                    <button style="display:none;" data-target="#taskmodal" data-toggle="modal" id="showTaskModal"></button>
+                </div>
+                <!-- END CONTENT BODY -->
+            </div>
+            <!-- END CONTENT -->
+            <!-- BEGIN QUICK SIDEBAR -->
+            <a href="javascript:;" class="page-quick-sidebar-toggler">
+                <i class="icon-login"></i>
+            </a>
+            <div class="page-quick-sidebar-wrapper" data-close-on-body-click="false">
+                <div class="page-quick-sidebar">
+                    <ul class="nav nav-tabs">
+                        <li class="active">
+                            <a href="javascript:;" data-target="#quick_sidebar_tab_1" data-toggle="tab"> Users
+                                <span class="badge badge-danger">2</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;" data-target="#quick_sidebar_tab_2" data-toggle="tab"> Alerts
+                                <span class="badge badge-success">7</span>
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> More
+                                <i class="fa fa-angle-down"></i>
+                            </a>
+                            <ul class="dropdown-menu pull-right">
+                                <li>
+                                    <a href="javascript:;" data-target="#quick_sidebar_tab_3" data-toggle="tab">
+                                        <i class="icon-bell"></i> Alerts </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;" data-target="#quick_sidebar_tab_3" data-toggle="tab">
+                                        <i class="icon-info"></i> Notifications </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;" data-target="#quick_sidebar_tab_3" data-toggle="tab">
+                                        <i class="icon-speech"></i> Activities </a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="javascript:;" data-target="#quick_sidebar_tab_3" data-toggle="tab">
+                                        <i class="icon-settings"></i> Settings </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active page-quick-sidebar-chat" id="quick_sidebar_tab_1">
+                            <div class="page-quick-sidebar-chat-users" data-rail-color="#ddd" data-wrapper-class="page-quick-sidebar-list">
+                                <h3 class="list-heading">Users</h3>
+                                <ul class="media-list list-items" id="StaffListSidebar">
+                                </ul>
+                            </div>
+                            <div class="page-quick-sidebar-item">
+                                <div class="page-quick-sidebar-chat-user">
+                                    <div class="page-quick-sidebar-nav">
+                                        <a href="javascript:;" class="page-quick-sidebar-back-to-list">
+                                            <i class="icon-arrow-left"></i>Back</a>
+                                    </div>
+                                    <div class="page-quick-sidebar-chat-user-messages">
+                                        <div class="post out">
+                                            <img class="avatar" alt="" src="../../../assets/layouts/layout/img/avatar3.jpg" />
+                                            <div class="message">
+                                                <span class="arrow"></span>
+                                                <a href="javascript:;" class="name">Bob Nilson</a>
+                                                <span class="datetime">20:15</span>
+                                                <span class="body"> When could you send me the report ? </span>
+                                            </div>
+                                        </div>
+                                        <div class="post in">
+                                            <img class="avatar" alt="" src="../../../assets/layouts/layout/img/avatar2.jpg" />
+                                            <div class="message">
+                                                <span class="arrow"></span>
+                                                <a href="javascript:;" class="name">Ella Wong</a>
+                                                <span class="datetime">20:15</span>
+                                                <span class="body"> Its almost done. I will be sending it shortly </span>
+                                            </div>
+                                        </div>
+                                        <div class="post out">
+                                            <img class="avatar" alt="" src="../../../assets/layouts/layout/img/avatar3.jpg" />
+                                            <div class="message">
+                                                <span class="arrow"></span>
+                                                <a href="javascript:;" class="name">Bob Nilson</a>
+                                                <span class="datetime">20:15</span>
+                                                <span class="body"> Alright. Thanks! :) </span>
+                                            </div>
+                                        </div>
+                                        <div class="post in">
+                                            <img class="avatar" alt="" src="../../../assets/layouts/layout/img/avatar2.jpg" />
+                                            <div class="message">
+                                                <span class="arrow"></span>
+                                                <a href="javascript:;" class="name">Ella Wong</a>
+                                                <span class="datetime">20:16</span>
+                                                <span class="body"> You are most welcome. Sorry for the delay. </span>
+                                            </div>
+                                        </div>
+                                        <div class="post out">
+                                            <img class="avatar" alt="" src="../../../assets/layouts/layout/img/avatar3.jpg" />
+                                            <div class="message">
+                                                <span class="arrow"></span>
+                                                <a href="javascript:;" class="name">Bob Nilson</a>
+                                                <span class="datetime">20:17</span>
+                                                <span class="body"> No probs. Just take your time :) </span>
+                                            </div>
+                                        </div>
+                                        <div class="post in">
+                                            <img class="avatar" alt="" src="../../../assets/layouts/layout/img/avatar2.jpg" />
+                                            <div class="message">
+                                                <span class="arrow"></span>
+                                                <a href="javascript:;" class="name">Ella Wong</a>
+                                                <span class="datetime">20:40</span>
+                                                <span class="body"> Alright. I just emailed it to you. </span>
+                                            </div>
+                                        </div>
+                                        <div class="post out">
+                                            <img class="avatar" alt="" src="../../../assets/layouts/layout/img/avatar3.jpg" />
+                                            <div class="message">
+                                                <span class="arrow"></span>
+                                                <a href="javascript:;" class="name">Bob Nilson</a>
+                                                <span class="datetime">20:17</span>
+                                                <span class="body"> Great! Thanks. Will check it right away. </span>
+                                            </div>
+                                        </div>
+                                        <div class="post in">
+                                            <img class="avatar" alt="" src="../../../assets/layouts/layout/img/avatar2.jpg" />
+                                            <div class="message">
+                                                <span class="arrow"></span>
+                                                <a href="javascript:;" class="name">Ella Wong</a>
+                                                <span class="datetime">20:40</span>
+                                                <span class="body"> Please let me know if you have any comment. </span>
+                                            </div>
+                                        </div>
+                                        <div class="post out">
+                                            <img class="avatar" alt="" src="../../../assets/layouts/layout/img/avatar3.jpg" />
+                                            <div class="message">
+                                                <span class="arrow"></span>
+                                                <a href="javascript:;" class="name">Bob Nilson</a>
+                                                <span class="datetime">20:17</span>
+                                                <span class="body"> Sure. I will check and buzz you if anything needs to be corrected. </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="page-quick-sidebar-chat-user-form">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" placeholder="Type a message here...">
+                                            <div class="input-group-btn">
+                                                <button type="button" class="btn green">
+                                                    <i class="icon-paper-clip"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane page-quick-sidebar-alerts" id="quick_sidebar_tab_2">
+                            <div class="page-quick-sidebar-alerts-list">
+                                <h3 class="list-heading">General</h3>
+                                <ul class="feeds list-items">
+                                    <li>
+                                        <div class="col1">
+                                            <div class="cont">
+                                                <div class="cont-col1">
+                                                    <div class="label label-sm label-info">
+                                                        <i class="fa fa-check"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="cont-col2">
+                                                    <div class="desc"> You have 4 pending tasks.
+                                                        <span class="label label-sm label-warning "> Take action
+                                                            <i class="fa fa-share"></i>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col2">
+                                            <div class="date"> Just now </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;">
+                                            <div class="col1">
+                                                <div class="cont">
+                                                    <div class="cont-col1">
+                                                        <div class="label label-sm label-success">
+                                                            <i class="fa fa-bar-chart-o"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="cont-col2">
+                                                        <div class="desc"> Finance Report for year 2013 has been released. </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col2">
+                                                <div class="date"> 20 mins </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <div class="col1">
+                                            <div class="cont">
+                                                <div class="cont-col1">
+                                                    <div class="label label-sm label-danger">
+                                                        <i class="fa fa-user"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="cont-col2">
+                                                    <div class="desc"> You have 5 pending membership that requires a quick review. </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col2">
+                                            <div class="date"> 24 mins </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="col1">
+                                            <div class="cont">
+                                                <div class="cont-col1">
+                                                    <div class="label label-sm label-info">
+                                                        <i class="fa fa-shopping-cart"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="cont-col2">
+                                                    <div class="desc"> New order received with
+                                                        <span class="label label-sm label-success"> Reference Number: DR23923 </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col2">
+                                            <div class="date"> 30 mins </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="col1">
+                                            <div class="cont">
+                                                <div class="cont-col1">
+                                                    <div class="label label-sm label-success">
+                                                        <i class="fa fa-user"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="cont-col2">
+                                                    <div class="desc"> You have 5 pending membership that requires a quick review. </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col2">
+                                            <div class="date"> 24 mins </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="col1">
+                                            <div class="cont">
+                                                <div class="cont-col1">
+                                                    <div class="label label-sm label-info">
+                                                        <i class="fa fa-bell-o"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="cont-col2">
+                                                    <div class="desc"> Web server hardware needs to be upgraded.
+                                                        <span class="label label-sm label-warning"> Overdue </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col2">
+                                            <div class="date"> 2 hours </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;">
+                                            <div class="col1">
+                                                <div class="cont">
+                                                    <div class="cont-col1">
+                                                        <div class="label label-sm label-default">
+                                                            <i class="fa fa-briefcase"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="cont-col2">
+                                                        <div class="desc"> IPO Report for year 2013 has been released. </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col2">
+                                                <div class="date"> 20 mins </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <h3 class="list-heading">System</h3>
+                                <ul class="feeds list-items">
+                                    <li>
+                                        <div class="col1">
+                                            <div class="cont">
+                                                <div class="cont-col1">
+                                                    <div class="label label-sm label-info">
+                                                        <i class="fa fa-check"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="cont-col2">
+                                                    <div class="desc"> You have 4 pending tasks.
+                                                        <span class="label label-sm label-warning "> Take action
+                                                            <i class="fa fa-share"></i>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col2">
+                                            <div class="date"> Just now </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;">
+                                            <div class="col1">
+                                                <div class="cont">
+                                                    <div class="cont-col1">
+                                                        <div class="label label-sm label-danger">
+                                                            <i class="fa fa-bar-chart-o"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="cont-col2">
+                                                        <div class="desc"> Finance Report for year 2013 has been released. </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col2">
+                                                <div class="date"> 20 mins </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <div class="col1">
+                                            <div class="cont">
+                                                <div class="cont-col1">
+                                                    <div class="label label-sm label-default">
+                                                        <i class="fa fa-user"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="cont-col2">
+                                                    <div class="desc"> You have 5 pending membership that requires a quick review. </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col2">
+                                            <div class="date"> 24 mins </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="col1">
+                                            <div class="cont">
+                                                <div class="cont-col1">
+                                                    <div class="label label-sm label-info">
+                                                        <i class="fa fa-shopping-cart"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="cont-col2">
+                                                    <div class="desc"> New order received with
+                                                        <span class="label label-sm label-success"> Reference Number: DR23923 </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col2">
+                                            <div class="date"> 30 mins </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="col1">
+                                            <div class="cont">
+                                                <div class="cont-col1">
+                                                    <div class="label label-sm label-success">
+                                                        <i class="fa fa-user"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="cont-col2">
+                                                    <div class="desc"> You have 5 pending membership that requires a quick review. </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col2">
+                                            <div class="date"> 24 mins </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="col1">
+                                            <div class="cont">
+                                                <div class="cont-col1">
+                                                    <div class="label label-sm label-warning">
+                                                        <i class="fa fa-bell-o"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="cont-col2">
+                                                    <div class="desc"> Web server hardware needs to be upgraded.
+                                                        <span class="label label-sm label-default "> Overdue </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col2">
+                                            <div class="date"> 2 hours </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;">
+                                            <div class="col1">
+                                                <div class="cont">
+                                                    <div class="cont-col1">
+                                                        <div class="label label-sm label-info">
+                                                            <i class="fa fa-briefcase"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="cont-col2">
+                                                        <div class="desc"> IPO Report for year 2013 has been released. </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col2">
+                                                <div class="date"> 20 mins </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="tab-pane page-quick-sidebar-settings" id="quick_sidebar_tab_3">
+                            <div class="page-quick-sidebar-settings-list">
+                                <h3 class="list-heading">General Settings</h3>
+                                <ul class="list-items borderless">
+                                    <li> Enable Notifications
+                                        <input type="checkbox" class="make-switch" checked data-size="small" data-on-color="success" data-on-text="ON" data-off-color="default" data-off-text="OFF"> </li>
+                                    <li> Allow Tracking
+                                        <input type="checkbox" class="make-switch" data-size="small" data-on-color="info" data-on-text="ON" data-off-color="default" data-off-text="OFF"> </li>
+                                    <li> Log Errors
+                                        <input type="checkbox" class="make-switch" checked data-size="small" data-on-color="danger" data-on-text="ON" data-off-color="default" data-off-text="OFF"> </li>
+                                    <li> Auto Sumbit Issues
+                                        <input type="checkbox" class="make-switch" data-size="small" data-on-color="warning" data-on-text="ON" data-off-color="default" data-off-text="OFF"> </li>
+                                    <li> Enable SMS Alerts
+                                        <input type="checkbox" class="make-switch" checked data-size="small" data-on-color="success" data-on-text="ON" data-off-color="default" data-off-text="OFF"> </li>
+                                </ul>
+                                <h3 class="list-heading">System Settings</h3>
+                                <ul class="list-items borderless">
+                                    <li> Security Level
+                                        <select class="form-control input-inline input-sm input-small">
+                                            <option value="1">Normal</option>
+                                            <option value="2" selected>Medium</option>
+                                            <option value="e">High</option>
+                                        </select>
+                                    </li>
+                                    <li> Failed Email Attempts
+                                        <input class="form-control input-inline input-sm input-small" value="5" /> </li>
+                                    <li> Secondary SMTP Port
+                                        <input class="form-control input-inline input-sm input-small" value="3560" /> </li>
+                                    <li> Notify On System Error
+                                        <input type="checkbox" class="make-switch" checked data-size="small" data-on-color="danger" data-on-text="ON" data-off-color="default" data-off-text="OFF"> </li>
+                                    <li> Notify On SMTP Error
+                                        <input type="checkbox" class="make-switch" checked data-size="small" data-on-color="warning" data-on-text="ON" data-off-color="default" data-off-text="OFF"> </li>
+                                </ul>
+                                <div class="inner-content">
+                                    <button class="btn btn-success">
+                                        <i class="icon-settings"></i> Save Changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END QUICK SIDEBAR -->
+        </div>
+        <!-- END CONTAINER -->
+        <!-- BEGIN FOOTER -->
+        <div class="page-footer">
+            <div class="page-footer-inner"> 2017 &copy; Pro Source Global BPO.
+            </div>
+            <div class="scroll-to-top">
+                <i class="icon-arrow-up"></i>
+            </div>
+        </div>
+        <!-- END FOOTER -->
+        <!--[if lt IE 9]>
+<script src="../assets/global/plugins/respond.min.js"></script>
+<script src="../assets/global/plugins/excanvas.min.js"></script> 
+<![endif]-->
+        <!-- BEGIN CORE PLUGINS -->
+        <script src="../../../assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+        <script src="../../../assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="../../../assets/global/plugins/js.cookie.min.js" type="text/javascript"></script>
+        <script src="../../../assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
+        <script src="../../../assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+        <script src="../../../assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+        <script src="../../../assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+        <!-- END CORE PLUGINS -->
+        <!-- BEGIN PAGE LEVEL PLUGINS -->
+        <script src="../../../assets/global/plugins/select2/js/select2.full.min.js" type="text/javascript"></script>
+        <script src="../../../assets/global/plugins/bootstrap-wysihtml5/wysihtml5-0.3.0.js" type="text/javascript"></script>
+        <script src="../../../assets/global/plugins/bootstrap-wysihtml5/bootstrap-wysihtml5.js" type="text/javascript"></script>
+        <script src="../../../assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js" type="text/javascript"></script>
+        <script src="../../../assets/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
+        <script src="../../../assets/global/plugins/moment.min.js" type="text/javascript"></script>
+        <script src="../../../assets/global/plugins/jquery.mockjax.js" type="text/javascript"></script>
+        <script src="../../../assets/global/plugins/bootstrap-editable/bootstrap-editable/js/bootstrap-editable.js" type="text/javascript"></script>
+        <script src="../../../assets/global/plugins/bootstrap-editable/inputs-ext/address/address.js" type="text/javascript"></script>
+        <script src="../../../assets/global/plugins/bootstrap-editable/inputs-ext/wysihtml5/wysihtml5.js" type="text/javascript"></script>
+        <script src="../../../assets/global/plugins/bootstrap-typeahead/bootstrap3-typeahead.min.js" type="text/javascript"></script>
+        <!-- END PAGE LEVEL PLUGINS -->
+        <!-- BEGIN THEME GLOBAL SCRIPTS -->
+        <script src="../../../assets/global/scripts/app.js" type="text/javascript"></script>
+        <script src="../../../assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js" type="text/javascript"></script>
+        <!-- END THEME GLOBAL SCRIPTS -->
+        <!-- BEGIN PAGE LEVEL SCRIPTS -->
+        <!-- <script src="../../../js/show-accounts.js" type="text/javascript"></script> -->
+        <!-- END PAGE LEVEL SCRIPTS -->
+        <!-- BEGIN THEME LAYOUT SCRIPTS -->
+        <script src="../../../assets/layouts/layout/scripts/layout.min.js" type="text/javascript"></script>
+        <script src="../../../assets/layouts/layout/scripts/demo.min.js" type="text/javascript"></script>
+        <script src="../../../assets/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
+        <script src="../../../assets/global/plugins/bootstrap-wizard/jquery.bootstrap.wizard.min.js" type="text/javascript"></script>
+        <script src="../../../assets/global/plugins/bootstrap-toastr/toastr.min.js" type="text/javascript"></script>
+        <script type="text/javascript" src='../../../js/jquery.events.input.js'></script>
+        <script type="text/javascript" src='../../../js/jquery.elastic.js'></script>
+        <script type="text/javascript" src="../../../js/underscore.min.js"></script>
+        <script type="text/javascript" src="../../../js/jquery.mentionsInput.js"></script>
+        <script src="../../../js/global.js"></script>
+        <script src="../../../assets/global/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
+        <script src="../../../assets/global/plugins/jquery-validation/js/additional-methods.min.js" type="text/javascript"></script>
+        <script src="../../../js/show_accounts.js"></script>
+        <!-- END THEME LAYOUT SCRIPTS -->
+    </body>

@@ -1,0 +1,408 @@
+"use strict";
+var express = require('express');
+var router = express.Router();
+var mongoose = require('mongoose');
+var TeamModel = require('../model/team');
+var UsersModel = require('../model/user');
+var CampaignLocModel = require('../model/campaignlogacall');
+var CampaignPostModel = require('../model/campaignpost');
+var campaignTaskModel = require('../model/campaignTask');
+
+//get admin campaigns
+router.get('/', ensureAuthenticated, userPermissionAccess,  function(req, res){
+	var user_id = req.user._id;
+	var user_name = req.user.fullname;
+	var path = req.user.path;
+	var logo = "../assets/layouts/layout/img/logo.png";
+	res.render('campaigns/campaigns',  
+		{
+			userid : user_id, 
+			userName : user_name, 
+			userImgPath : path,
+			logo: logo,
+			active : {
+				campaigns : true
+			}
+		}
+	);
+});
+
+router.get('/show_campaign/:id', ensureAuthenticated, userPermissionAccess, function(req,res){
+	var user_id = req.user._id;
+	var user_name = req.user.fullname;
+	var path = req.user.path;
+	var logo = "../../../assets/layouts/layout/img/logo.png";
+	TeamModel.findOne({_id:req.params.id})
+			 .populate('account')
+			 .populate('campaign_owner','fullname')
+			 .exec(function(err,campaigns){
+			 	if (err) return err;
+			 	UsersModel.find({team:req.params.id}).populate('account').exec(function(err,userCampaign){
+			 		if (err) return err;
+			 		res.render('campaigns/show_campaigns',  
+			 			{	
+			 				userCampaign : userCampaign,
+			 				campaignsModel : campaigns,
+			 				userid : user_id, 
+			 				userName : user_name, 
+			 				userImgPath : path,
+			 				logo: logo,
+			 				active : {
+			 					campaigns : true
+			 				},
+			 				helpers : {
+			 					campaignDate : function(){
+			 							var newMonth;
+			 							var date = new Date(campaigns.dateCreated);
+			 							var month = date.getMonth() + 1;
+			 							switch(month){
+			 								case 1 : 
+			 									newMonth =  'January';
+			 									break;
+			 								case 2 : 
+			 									newMonth = 'February';
+			 									break;
+			 								case 3 : 
+			 									newMonth = 'March';
+			 									break;
+			 								case 4 : 
+			 									newMonth = 'April';
+			 									break;
+			 								case 5 : 
+			 									newMonth = 'May';
+			 									break;
+			 								case 6 : 
+			 									newMonth = 'June';
+			 									break;
+			 								case 7 : 
+			 									newMonth = 'July';
+			 									break;
+			 								case 8 : 
+			 									newMonth = 'August';
+			 									break;
+			 								case 9 : 
+			 									newMonth = 'September';
+			 									break;
+			 								case 10 : 
+			 									newMonth = 'October';
+			 									break;
+			 								case 11 : 
+			 									newMonth = 'November';
+			 									break;
+			 								case 12 : 
+			 									newMonth = 'December';
+			 									break;
+			 							}
+			 							return newMonth + " " + date.getDate() + "," + date.getFullYear();
+			 					},
+			 					jsonCount : function(){
+			 						var count = Object.keys(userCampaign).length;
+			 						return count;
+			 					}
+			 				}
+			 			}
+			 		);
+			 	});
+			 });
+})
+
+//http request
+
+router.post('/add_campaign', function(req,res){
+	var obj = {};
+	var team_name = req.body.team_name;
+	var account = req.body.account;
+	var campaign_owner = req.user._id;
+	var errors = req.validationErrors();
+	if (errors) {
+		console.log()('error on adding campaign');
+	} else {
+		var newTeam = new TeamModel ({
+			team_name : team_name,
+			account : account,
+			campaign_owner : campaign_owner
+		});
+		TeamModel.createTeam(newTeam,function(err,campaign){
+			if(err) throw err;
+			console.log(campaign);
+		});
+	}
+	res.send('Created Campaign');
+
+});
+
+router.delete('/delete_campaign/', function(req,res){
+	var obj = {};
+	var campaign_id = req.body.campaign_id;
+	TeamModel.findOneAndRemove({
+		_id: campaign_id
+	})
+	.exec()
+	.then((team) => {
+		console.log(team);
+		res.json(team);
+	})
+	.catch((err) => {
+		res.send('error occured');
+	});
+});
+
+router.put('/update_campaign', function(req,res){
+	var obj = {};
+	var campaign_id = req.body.campaign_id;
+	var team_name = req.body.team_name;
+	var campaign_owner = req.body.campaign_owner;
+	TeamModel.findOneAndUpdate({
+		_id : campaign_id
+	},
+		{ 
+			$set: 
+				{ 
+					team_name: team_name,
+					campaign_owner : campaign_owner
+				 },
+
+		},
+		{ upsert: false },
+		function(err, newUpdatedTeam){
+			if (err) {
+				console.log("errors tanga");
+			} else {
+				console.log(newUpdatedTeam);
+			}
+	});
+	res.send('success');
+});
+
+router.post('/add_campaignLoc', function(req,res){
+	var obj = {};
+	var subject = req.body.subject;
+	var comments = req.body.comments;
+	var created_by = req.user._id;
+	var campaigns = req.body.campaigns;
+	var assigned = req.body.assigned;
+	var errors = req.validationErrors();
+	if (errors) {
+		console.log('error on adding LOC');
+	} else {
+		var newCampaignLogCall = new CampaignLocModel ({
+			subject : subject,
+			comments : comments,
+			created_by : created_by,
+			campaigns : campaigns,
+			assigned : assigned
+		});
+		CampaignLocModel.createCampaignLogCall(newCampaignLogCall,function(err,campaignLoc){
+			if(err) throw err;
+			console.log(campaignLoc);
+		});
+	}
+	res.send('Created LOC');
+});
+
+
+router.post('/add_campaignPost', function(req,res){
+	var obj = {};
+	var post = req.body.post;
+	var created_by = req.user._id;
+	var campaign = req.body.campaign;
+	var errors = req.validationErrors();
+	console.log(created_by);
+	if (errors) {
+		console.log('error on post');
+	} else {
+
+		var newPostCampaign = new CampaignPostModel({
+			post : post,
+			created_by : created_by,
+			campaign : campaign
+		});
+		CampaignPostModel.CreateCampaignPost(newPostCampaign,function(err,campaignsPost){
+			if(err) throw err;
+			console.log(campaignsPost);
+		});
+	}
+	res.send('Created Post');
+});
+
+router.post('/add_task', function(req,res){
+
+	var obj = {};
+	var subject = req.body.subject;
+	var due_date = req.body.due_date;
+	var comments = req.body.comments;
+	var campaign = req.body.campaign;
+	var assigned = req.body.assigned;
+	var priority = req.body.priority;
+	var status = req.body.status;
+	var created_by = req.user._id;
+
+	var errors = req.validationErrors();
+
+	if (errors) {
+		console.log('errors');
+	} else {
+		var newCampaignTask = new campaignTaskModel({
+			subject : subject,
+			due_date : due_date,
+			comments : comments,
+			campaign : campaign,
+			assigned : assigned,
+			priority : priority,
+			status : status,
+			created_by : created_by
+		});
+
+		campaignTaskModel.createCampaignTask(newCampaignTask, function(err,tasks){
+			if (err) {
+				console.log('error on adding tasks');
+			} else {
+				console.log(tasks);
+			}
+		});
+	}
+	res.json('success');
+});
+
+
+//api calls
+
+//find all data in Campaign table
+
+router.get('/api', function(req,res){
+	TeamModel.find({})
+		.populate('account','account_name')
+		.populate('campaign_owner','fullname')
+		.exec()
+		.then((campaign) => {
+			console.log(campaign);
+			res.json(campaign);
+		})
+		.catch((err) => {
+			res.send("error occured");
+		});
+});
+
+
+//find one data in Campaigns table
+
+router.get('/api/:id' , function(req,res){
+	TeamModel.findOne({
+		_id:req.params.id
+	})
+	.populate('account','account_name')
+	.populate('campaign_owner','fullname')
+	.exec()
+	.then((campaigns) => {
+		console.log(campaigns);
+		res.json(campaigns);
+	})
+	.catch((err) => {
+		res.send('error occured');
+	});
+});
+
+//get campaign by account ID
+
+router.get('/api/account/:account_id', function(req,res){
+	TeamModel.find({account:req.params.account_id})
+			 .populate('account', 'account_name')
+			 .exec()
+			 .then((CampaignAccount) => {
+			 	console.log(CampaignAccount);
+			 	res.json(CampaignAccount);
+			 })
+			 .catch((err) => {
+			 	res.send('error occured');
+			 })
+});
+
+router.get('/api/user/:id', function(req,res){
+	UsersModel.find({team: req.params.id})
+		.populate('team','team_name')
+		.populate('account','account_name')
+		.exec()
+		.then((userData) => {
+			console.log(userData);
+			res.json(userData);
+		})
+		.catch((err) => {
+			res.send('error on getting data');
+		})
+});
+
+router.get('/api/campaign_loc/:campaign_id', function(req,res){
+	CampaignLocModel.find({campaigns:req.params.campaign_id})
+		.sort({date_created:-1})
+		.populate('created_by').populate('campaigns').populate('assigned')
+		.exec()
+		.then((campainglac) => {
+			console.log(campainglac)
+			res.json(campainglac);
+		})
+		.catch((err) => {
+			console.log('error on fetching Campaign Log a Call');
+		})
+
+});
+
+router.get('/api/loc_viewone/:id', function(req,res){
+	CampaignLocModel.findOne({_id:req.params.id})
+		.populate('created_by').populate('campaigns').populate('assigned')
+		.exec()
+		.then((campainglac) => {
+			console.log(campainglac)
+			res.json(campainglac);
+		})
+		.catch((err) => {
+			console.log('error on fetching Campaign Log a Call');
+		})
+});
+
+router.get('/api/campaign_post/:campaign_id', function(req,res){
+	CampaignPostModel.find({campaign:req.params.campaign_id})
+		.sort({dateCreated:-1})
+		.populate('created_by').populate('campaign')
+		.exec()
+		.then((campaignPost) => {
+			console.log(campaignPost);
+			res.json(campaignPost);
+		})
+		.catch((err) => {
+			console.log('error on fetching Campaign Post');
+		})
+});
+
+router.get('/api/campaign_task/:campaign_id', function(req,res){
+	campaignTaskModel.find({campaign:req.params.campaign_id})
+		.sort({date_created:-1})
+		.populate('assigned').populate('created_by')
+		.exec()
+		.then((campaignTask) => {
+			console.log(campaignTask);
+			res.json(campaignTask);
+		})
+		.catch((err) => {
+			console.log('error on fething campaign task');
+		})
+});
+
+function ensureAuthenticated(req, res, next){
+	if(req.isAuthenticated()){
+		return next();
+	} else {
+		res.redirect('/users/login');
+	}
+}
+
+function userPermissionAccess(req,res,next) {
+	if ( req.user.role == 'admin') {
+		console.log('User is Login');
+		return next();
+	} else {
+		//console.log('Welcome ' + req.user.fullname);
+		res.send(404,'youre not allowed');
+	}
+}
+
+module.exports = router;
